@@ -48,7 +48,7 @@ struct ListedPlacesMap: View {
         )
     }
 
-    private func adoptedPlacesList() -> some View {
+    private func footerView() -> some View {
         orientedPlacesList()
             .safeAreaInset(edge: .top) {
                 Button("List Mode", systemImage: "list.bullet") {
@@ -76,7 +76,7 @@ struct ListedPlacesMap: View {
         .ignoresSafeArea(.keyboard)
         .overlay(alignment: .bottom) {
             if !manager.places.isEmpty {
-                adoptedPlacesList()
+                footerView()
             }
         }
         .safeAreaInset(edge: .top, content: searchBar)
