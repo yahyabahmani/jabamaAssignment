@@ -47,7 +47,8 @@ struct ListedPlacesMap: View {
         .ignoresSafeArea(.keyboard)
         .overlay(alignment: .bottom) {
             if !manager.places.isEmpty {
-                PlacesHorizontalList(
+                PlacesList(
+                    axes: .horizontal,
                     places: manager.places.map { .init($0) },
                     scrollPosition: $selectedPlace,
                     onLastAppear: manager.onLastAppear,

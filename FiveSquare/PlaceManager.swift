@@ -62,7 +62,7 @@ class PlaceManager {
             let randomName = UUID().uuidString.prefix(Int.random(in: 5...15))
 
             return .init(
-                id: UUID().uuidString,
+                id: "\($0)" + randomName,
                 name: String(randomName),
                 type: "Restaurant",
                 distance: $0 * 10,
