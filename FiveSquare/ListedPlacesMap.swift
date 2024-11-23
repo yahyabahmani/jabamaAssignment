@@ -46,15 +46,19 @@ struct ListedPlacesMap: View {
         )
         .ignoresSafeArea(.keyboard)
         .overlay(alignment: .bottom) {
-            PlacesHorizontalList(
-                places: manager.places.map { .init($0) },
-                scrollPosition: $selectedPlace,
-                onLastAppear: manager.onLastAppear,
-                isLoading: manager.isLoading
-            )
+            if !manager.places.isEmpty {
+                PlacesHorizontalList(
+                    places: manager.places.map { .init($0) },
+                    scrollPosition: $selectedPlace,
+                    onLastAppear: manager.onLastAppear,
+                    isLoading: manager.isLoading
+                )
+                .transition(.move(edge: .bottom).combined(with: .opacity))
+            }
         }
         .safeAreaInset(edge: .top, content: searchBar)
         .animation(.spring, value: selectedPlace)
+        .animation(.spring, value: manager.places.isEmpty)
     }
 }
 
