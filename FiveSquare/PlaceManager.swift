@@ -42,6 +42,20 @@ class PlaceManager {
             places += Self.dummyPlaces()
         }
     }
+    
+    func onSearchSubmit(text: String) {
+        task?.cancel()
+        places = []
+
+        // TODO: Search with the given information
+        task = Task {
+            defer { task = nil }
+            try await Task.sleep(for: .seconds(2))
+
+            // TODO: Fetch next page from server
+            places += Self.dummyPlaces()
+        }
+    }
 
     static func dummyPlaces() -> [Place] {
         (1...10).map {
