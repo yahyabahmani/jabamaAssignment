@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PlaceCard: View {
     let place: Model
-    
+
     private let radius: CGFloat = 16
     private let lineWidth: CGFloat = 1
     private let contentPadding: CGFloat = 8
@@ -27,7 +27,7 @@ struct PlaceCard: View {
         .background(.background.secondary)
         .clipShape(.rect(cornerRadius: radius - contentPadding - lineWidth))
     }
-    
+
     var distanceLabel: String {
         if let distance = place.distance {
             "Distance: \(distance)"
@@ -68,6 +68,7 @@ struct PlaceCard: View {
 #Preview(traits: .sizeThatFitsLayout) {
     PlaceCard(
         place: .init(
+            id: "1",
             imageUrl: .init(string: "https://i.sstatic.net/mv2C45Ds.jpg"),
             name: "Sushiant",
             type: "Restaurant",

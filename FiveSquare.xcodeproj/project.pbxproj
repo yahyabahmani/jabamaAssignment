@@ -12,6 +12,7 @@
 		124407E02CF218820014265D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 124407DF2CF218820014265D /* Assets.xcassets */; };
 		12FD65352CF224500070DA18 /* PlaceCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65342CF224500070DA18 /* PlaceCard.swift */; };
 		12FD65372CF225200070DA18 /* PlaceCard.Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65362CF225200070DA18 /* PlaceCard.Model.swift */; };
+		12FD65392CF229F30070DA18 /* PlacesHorizontalList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65382CF229F30070DA18 /* PlacesHorizontalList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		124407DF2CF218820014265D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		12FD65342CF224500070DA18 /* PlaceCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceCard.swift; sourceTree = "<group>"; };
 		12FD65362CF225200070DA18 /* PlaceCard.Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCard.Model.swift; sourceTree = "<group>"; };
+		12FD65382CF229F30070DA18 /* PlacesHorizontalList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesHorizontalList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 				124407DB2CF218810014265D /* FiveSquareApp.swift */,
 				124407DD2CF218810014265D /* ContentView.swift */,
 				12FD65342CF224500070DA18 /* PlaceCard.swift */,
+				12FD65382CF229F30070DA18 /* PlacesHorizontalList.swift */,
 				12FD65362CF225200070DA18 /* PlaceCard.Model.swift */,
 				124407DF2CF218820014265D /* Assets.xcassets */,
 			);
@@ -133,6 +136,7 @@
 			files = (
 				12FD65372CF225200070DA18 /* PlaceCard.Model.swift in Sources */,
 				124407DE2CF218810014265D /* ContentView.swift in Sources */,
+				12FD65392CF229F30070DA18 /* PlacesHorizontalList.swift in Sources */,
 				12FD65352CF224500070DA18 /* PlaceCard.swift in Sources */,
 				124407DC2CF218810014265D /* FiveSquareApp.swift in Sources */,
 			);

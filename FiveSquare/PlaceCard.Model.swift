@@ -8,7 +8,8 @@
 import Foundation
 
 extension PlaceCard {
-    struct Model {
+    struct Model: Identifiable {
+        var id: String
         var imageUrl: URL?
         var name: String
         var type: String?
