@@ -9,18 +9,20 @@ import MapKit
 import SwiftUI
 
 struct ListedPlacesMap: View {
-    let places: [Model]
+    let manager = PlaceManager()
     @State var selectedPlace: Model.ID?
 
     var body: some View {
         PlacesMap(
-            places: places.map { .init($0) },
+            places: manager.places.map { .init($0) },
             selectedMarker: $selectedPlace
         )
         .overlay(alignment: .bottom) {
             PlacesHorizontalList(
-                places: places.map { .init($0) },
-                scrollPosition: $selectedPlace
+                places: manager.places.map { .init($0) },
+                scrollPosition: $selectedPlace,
+                onLastAppear: manager.onLastAppear,
+                isLoading: manager.isLoading
             )
         }
         .animation(.spring, value: selectedPlace)
@@ -28,20 +30,5 @@ struct ListedPlacesMap: View {
 }
 
 #Preview {
-    ListedPlacesMap(
-        places: (1...10).map {
-            let randomName = UUID().uuidString.prefix(Int.random(in: 5...15))
-
-            return .init(
-                id: "\($0)",
-                name: String(randomName),
-                type: "Restaurant",
-                distance: $0 * 10,
-                location: .init(
-                    latitude: .random(in: 25...40),
-                    longitude: .random(in: 48...60)
-                )
-            )
-        }
-    )
+    ListedPlacesMap()
 }

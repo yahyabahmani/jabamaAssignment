@@ -18,6 +18,7 @@
 		12FD65412CF234E70070DA18 /* ListedPlacesMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65402CF234E70070DA18 /* ListedPlacesMap.swift */; };
 		12FD65432CF236940070DA18 /* ListedPlacesMap.Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65422CF236940070DA18 /* ListedPlacesMap.Model.swift */; };
 		12FD65452CF239970070DA18 /* ListedPlacesMap+Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65442CF239970070DA18 /* ListedPlacesMap+Conversions.swift */; };
+		12FD65472CF2433E0070DA18 /* PlaceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65462CF2433E0070DA18 /* PlaceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		12FD65402CF234E70070DA18 /* ListedPlacesMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListedPlacesMap.swift; sourceTree = "<group>"; };
 		12FD65422CF236940070DA18 /* ListedPlacesMap.Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListedPlacesMap.Model.swift; sourceTree = "<group>"; };
 		12FD65442CF239970070DA18 /* ListedPlacesMap+Conversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListedPlacesMap+Conversions.swift"; sourceTree = "<group>"; };
+		12FD65462CF2433E0070DA18 /* PlaceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				124407DD2CF218810014265D /* ContentView.swift */,
 				12FD65342CF224500070DA18 /* PlaceCard.swift */,
 				12FD65382CF229F30070DA18 /* PlacesHorizontalList.swift */,
+				12FD65462CF2433E0070DA18 /* PlaceManager.swift */,
 				12FD653C2CF2306A0070DA18 /* PlacesMap.swift */,
 				12FD65402CF234E70070DA18 /* ListedPlacesMap.swift */,
 				12FD65442CF239970070DA18 /* ListedPlacesMap+Conversions.swift */,
@@ -157,6 +160,7 @@
 				12FD653D2CF2306A0070DA18 /* PlacesMap.swift in Sources */,
 				12FD65432CF236940070DA18 /* ListedPlacesMap.Model.swift in Sources */,
 				12FD65392CF229F30070DA18 /* PlacesHorizontalList.swift in Sources */,
+				12FD65472CF2433E0070DA18 /* PlaceManager.swift in Sources */,
 				12FD65352CF224500070DA18 /* PlaceCard.swift in Sources */,
 				124407DC2CF218810014265D /* FiveSquareApp.swift in Sources */,
 			);
