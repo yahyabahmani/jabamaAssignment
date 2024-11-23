@@ -16,13 +16,14 @@ struct PlacesList: View {
 
     var onLastAppear: () -> Void = { print("Last item appeared") }
     var isLoading: Bool = false
+
     private let extraPadding: CGFloat = 16
 
     private func placeholderCard() -> some View {
         PlaceCard(place: .dummy())
             .redacted(reason: .placeholder)
     }
-    
+
     @ViewBuilder
     private func layout<Content: View>(@ViewBuilder content: () -> Content) -> some View {
         switch axes {
@@ -50,7 +51,8 @@ struct PlacesList: View {
                     placeholderCard()
                         .containerRelativeFrame(.horizontal) { length, _ in
                             length - extraPadding
-                        }                }
+                        }
+                }
             }
             // Tell the lazy stack to fix the height
             .frame(maxHeight: axes == .horizontal ? 120 : .infinity)
