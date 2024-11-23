@@ -16,3 +16,16 @@ extension PlaceCard {
         var distance: Int?
     }
 }
+
+extension PlaceCard.Model {
+    static func dummy() -> Self {
+        let randomName = UUID().uuidString.prefix(Int.random(in: 5...15))
+
+        return .init(
+            id: UUID().uuidString,
+            name: String(randomName),
+            type: "Restaurant",
+            distance: .random(in: 10...100)
+        )
+    }
+}

@@ -35,15 +35,7 @@ struct PlacesHorizontalList: View {
 
 #Preview(traits: .sizeThatFitsLayout) {
     PlacesHorizontalList(
-        places: (1...10).map {
-            let randomName = UUID().uuidString.prefix(Int.random(in: 5...15))
-            return .init(
-                id: "\($0)",
-                name: String(randomName),
-                type: "Restaurant",
-                distance: $0 * 10
-            )
-        },
+        places: (1...10).map { _ in .dummy() },
         scrollPosition: .constant(nil)
     )
     .background(.yellow)
