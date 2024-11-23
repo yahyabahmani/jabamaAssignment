@@ -7,44 +7,46 @@
 
 import SwiftUI
 
-
 struct PlaceCard: View {
-    struct Model {
-        var imageUrl: URL?
-        var name: String
-        var type: String?
-        var distance: Int?
-    }
-    
     let place: Model
     
+    private let radius: CGFloat = 16
+    private let lineWidth: CGFloat = 1
+    private let contentPadding: CGFloat = 8
+
     func imageView() -> some View {
         AsyncImage(url: place.imageUrl) { image in
             image.resizable()
                 .aspectRatio(contentMode: .fill)
         } placeholder: {
-            
+            Image(systemName: "photo")
+                .imageScale(.large)
+                .foregroundStyle(.gray)
         }
         .frame(width: 80, height: 80)
-        .clipped()
-        .background(Color(.systemFill))
+        .background(.background.secondary)
+        .clipShape(.rect(cornerRadius: radius - contentPadding - lineWidth))
     }
+    
+    var distanceLabel: String {
+        if let distance = place.distance {
+            "Distance: \(distance)"
+        } else {
+            "Unmeasurable distance"
+        }
+    }
+
     func detailView() -> some View {
         VStack(alignment: .leading) {
-            
             Text(place.name)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .font(.headline)
-            
+
             Text(place.type ?? "")
                 .font(.subheadline)
-            if let distance = place.distance {
-                Text("Distance: \(distance)")
-                    .font(.caption2)
-            } else {
-                Text("Distance: unavailable")
-                    .font(.caption2)
-            }
+
+            Text(distanceLabel)
+                .font(.caption2)
         }
     }
 
@@ -53,20 +55,25 @@ struct PlaceCard: View {
             imageView()
             detailView()
         }
-        .padding(8)
+        .padding(contentPadding)
         .overlay {
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(Color(.gray), lineWidth: 0.5)
+            RoundedRectangle(cornerRadius: radius)
+                .strokeBorder(lineWidth: lineWidth)
+                .foregroundStyle(.background.secondary)
         }
-        .background(Color(.systemBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 10))
+        .background(Color(.systemBackground), in: .rect(cornerRadius: radius))
     }
 }
 
 #Preview(traits: .sizeThatFitsLayout) {
-    PlaceItem(
-        place: .init(name: "Banafshi", type: "cofe", distance: 12)
+    PlaceCard(
+        place: .init(
+            imageUrl: .init(string: "https://i.sstatic.net/mv2C45Ds.jpg"),
+            name: "Sushiant",
+            type: "Restaurant",
+            distance: 12
+        )
     )
-
     .padding()
+    .background(.pink)
 }
