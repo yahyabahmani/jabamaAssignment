@@ -12,10 +12,10 @@ struct PlacesMap: View {
     var places: [Model]
 
     @Binding var selectedMarker: Model.ID?
-    @State private var camera: MapCameraPosition = .userLocation(fallback: .automatic)
+    @State private var cameraPosition: MapCameraPosition = .userLocation(fallback: .automatic)
         
     var body: some View {
-        Map(position: $camera, selection: $selectedMarker) {
+        Map(position: $cameraPosition, selection: $selectedMarker) {
             ForEach(places) { place in
                 Marker(coordinate: place.location) {
                     Text(place.name)
