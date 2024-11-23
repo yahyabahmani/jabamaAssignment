@@ -10,12 +10,20 @@ import SwiftUI
 
 struct ListedPlacesMap: View {
     let places: [Model]
-    
+    @State var selectedPlace: Model.ID?
+
     var body: some View {
-        PlacesMap(places: places.map { .init($0) })
-            .overlay(alignment: .bottom) {
-                PlacesHorizontalList(places: places.map { .init($0) })
-            }
+        PlacesMap(
+            places: places.map { .init($0) },
+            selectedMarker: $selectedPlace
+        )
+        .overlay(alignment: .bottom) {
+            PlacesHorizontalList(
+                places: places.map { .init($0) },
+                scrollPosition: $selectedPlace
+            )
+        }
+        .animation(.spring, value: selectedPlace)
     }
 }
 

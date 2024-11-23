@@ -11,7 +11,7 @@ import SwiftUI
 struct PlacesMap: View {
     var places: [Model]
 
-    @State var selectedMarker: Model.ID?
+    @Binding var selectedMarker: Model.ID?
     @State private var camera: MapCameraPosition = .userLocation(fallback: .automatic)
         
     var body: some View {
@@ -46,6 +46,7 @@ struct PlacesMap: View {
                 ),
                 name: String(randomName)
             )
-        }
+        },
+        selectedMarker: .constant(nil)
     )
 }

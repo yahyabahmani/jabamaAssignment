@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct PlacesHorizontalList: View {
-    var places: [PlaceCard.Model]
+    typealias Model = PlaceCard.Model
+    
+    var places: [Model]
+    @Binding var scrollPosition: Model.ID?
 
     var body: some View {
         ScrollView(.horizontal) {
@@ -22,7 +25,10 @@ struct PlacesHorizontalList: View {
             .frame(height: 120)
             // Add some space for the scrollbar
             .padding(.bottom)
+            // Track the position
+            .scrollTargetLayout()
         }
+        .scrollPosition(id: $scrollPosition)
         .safeAreaPadding(.horizontal, 20)
     }
 }
@@ -37,7 +43,8 @@ struct PlacesHorizontalList: View {
                 type: "Restaurant",
                 distance: $0 * 10
             )
-        }
+        },
+        scrollPosition: .constant(nil)
     )
     .background(.yellow)
 }
