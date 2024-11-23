@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MapKit
 import Observation
 
 @Observable
@@ -19,6 +20,20 @@ class PlaceManager {
     func onLastAppear() {
         guard task == nil else { return }
 
+        task = Task {
+            defer { task = nil }
+            try await Task.sleep(for: .seconds(2))
+
+            // TODO: Fetch next page from server
+            places += Self.dummyPlaces()
+        }
+    }
+
+    func onSearchTap(coordinate: CLLocationCoordinate2D, distance: Double) {
+        task?.cancel()
+        places = []
+
+        // TODO: Search with the given information
         task = Task {
             defer { task = nil }
             try await Task.sleep(for: .seconds(2))

@@ -15,7 +15,8 @@ struct ListedPlacesMap: View {
     var body: some View {
         PlacesMap(
             places: manager.places.map { .init($0) },
-            selectedMarker: $selectedPlace
+            selectedMarker: $selectedPlace,
+            onSearchTap: manager.onSearchTap
         )
         .overlay(alignment: .bottom) {
             PlacesHorizontalList(
