@@ -20,6 +20,7 @@
 		12FD65452CF239970070DA18 /* ListedPlacesMap+Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65442CF239970070DA18 /* ListedPlacesMap+Conversions.swift */; };
 		12FD65472CF2433E0070DA18 /* PlaceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65462CF2433E0070DA18 /* PlaceManager.swift */; };
 		12FD654B2CF306250070DA18 /* WebserviceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD654A2CF306250070DA18 /* WebserviceClient.swift */; };
+		12FD654F2CF30FA70070DA18 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD654E2CF30FA70070DA18 /* Network.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		12FD65442CF239970070DA18 /* ListedPlacesMap+Conversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListedPlacesMap+Conversions.swift"; sourceTree = "<group>"; };
 		12FD65462CF2433E0070DA18 /* PlaceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceManager.swift; sourceTree = "<group>"; };
 		12FD654A2CF306250070DA18 /* WebserviceClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebserviceClient.swift; sourceTree = "<group>"; };
+		12FD654E2CF30FA70070DA18 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 			path = ViewDTOs;
 			sourceTree = "<group>";
 		};
+				12FD654E2CF30FA70070DA18 /* Network.swift */,
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -182,6 +185,7 @@
 				12FD65392CF229F30070DA18 /* PlacesList.swift in Sources */,
 				12FD65472CF2433E0070DA18 /* PlaceManager.swift in Sources */,
 				12FD65352CF224500070DA18 /* PlaceCard.swift in Sources */,
+				12FD654F2CF30FA70070DA18 /* Network.swift in Sources */,
 				124407DC2CF218810014265D /* FiveSquareApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
