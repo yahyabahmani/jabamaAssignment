@@ -75,30 +75,44 @@ struct ListedPlacesMap: View {
             .transition(.move(edge: .bottom).combined(with: .opacity))
     }
 
+    @ViewBuilder
+    func mapContainerView() -> some View {
+        if isPresentingList {
+            Label("Loading Map...", systemImage: "globe")
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .font(.largeTitle)
+                .foregroundStyle(.gray)
+        } else {
+            PlacesMap(
+                places: manager.places.map { .init($0) },
+                selectedMarker: $selectedPlace,
+                onSearchTap: { coordinate, distance in
+                    manager.onSearchTap(coordinate: coordinate, distance: distance, text: searchText)
+                },
+                mapCamera: $mapCamera
+            )
+            .transition(.opacity)
+        }
+    }
+
     var body: some View {
-        PlacesMap(
-            places: manager.places.map { .init($0) },
-            selectedMarker: $selectedPlace,
-            onSearchTap: { (coordinate, distance) in
-                manager.onSearchTap(coordinate: coordinate, distance: distance, text: searchText)
-            },
-            mapCamera: $mapCamera
-        )
-        .ignoresSafeArea(.keyboard)
-        .overlay(alignment: .bottom) {
-            if !manager.places.isEmpty {
-                footerView()
+        mapContainerView()
+            .animation(.default, value: isPresentingList)
+            .ignoresSafeArea(.keyboard)
+            .overlay(alignment: .bottom) {
+                if !manager.places.isEmpty {
+                    footerView()
+                }
             }
-        }
-        .safeAreaInset(edge: .top, content: searchBar)
-        .animation(.spring, value: selectedPlace)
-        .animation(.spring, value: manager.places.isEmpty)
-        .sheet(isPresented: $isPresentingList) {
-            orientedPlacesList(.vertical)
-                .presentationDragIndicator(.visible)
-                // Make some room for the presentation drag indicator
-                .padding(.top)
-        }
+            .safeAreaInset(edge: .top, content: searchBar)
+            .animation(.spring, value: selectedPlace)
+            .animation(.spring, value: manager.places.isEmpty)
+            .sheet(isPresented: $isPresentingList) {
+                orientedPlacesList(.vertical)
+                    .presentationDragIndicator(.visible)
+                    // Make some room for the presentation drag indicator
+                    .padding(.top)
+            }
     }
 }
 
