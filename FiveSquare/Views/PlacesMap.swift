@@ -64,6 +64,17 @@ struct PlacesMap: View {
         }
         .animation(.spring, value: showSearchButton)
         .onAppear { try? locationManager.requestAuthorization() }
+        .onChange(of: selectedMarker) {
+            if let selectedPlace = places.first(where: { $0.id == selectedMarker }) {
+                cameraPosition = .region(
+                    .init(
+                        center: selectedPlace.location,
+                        span: .init(latitudeDelta: 0.015, longitudeDelta: 0.015)
+                    )
+                )
+            }
+        }
+        .animation(.default, value: cameraPosition)
     }
 }
 
