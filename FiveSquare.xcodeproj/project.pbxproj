@@ -20,7 +20,11 @@
 		12FD65452CF239970070DA18 /* ListedPlacesMap+Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65442CF239970070DA18 /* ListedPlacesMap+Conversions.swift */; };
 		12FD65472CF2433E0070DA18 /* PlaceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65462CF2433E0070DA18 /* PlaceManager.swift */; };
 		12FD654B2CF306250070DA18 /* WebserviceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD654A2CF306250070DA18 /* WebserviceClient.swift */; };
+		12FD654D2CF30E6F0070DA18 /* FoursquareAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD654C2CF30E6F0070DA18 /* FoursquareAPI.swift */; };
 		12FD654F2CF30FA70070DA18 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD654E2CF30FA70070DA18 /* Network.swift */; };
+		12FD65512CF314380070DA18 /* Optional+Throwing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65502CF314380070DA18 /* Optional+Throwing.swift */; };
+		12FD65542CF314D90070DA18 /* PlacesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65532CF314D90070DA18 /* PlacesResponse.swift */; };
+		12FD65572CF319540070DA18 /* Place+Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65562CF319540070DA18 /* Place+Conversions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,7 +42,11 @@
 		12FD65442CF239970070DA18 /* ListedPlacesMap+Conversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListedPlacesMap+Conversions.swift"; sourceTree = "<group>"; };
 		12FD65462CF2433E0070DA18 /* PlaceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceManager.swift; sourceTree = "<group>"; };
 		12FD654A2CF306250070DA18 /* WebserviceClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebserviceClient.swift; sourceTree = "<group>"; };
+		12FD654C2CF30E6F0070DA18 /* FoursquareAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoursquareAPI.swift; sourceTree = "<group>"; };
 		12FD654E2CF30FA70070DA18 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		12FD65502CF314380070DA18 /* Optional+Throwing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Throwing.swift"; sourceTree = "<group>"; };
+		12FD65532CF314D90070DA18 /* PlacesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesResponse.swift; sourceTree = "<group>"; };
+		12FD65562CF319540070DA18 /* Place+Conversions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Place+Conversions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,11 +80,13 @@
 			isa = PBXGroup;
 			children = (
 				124407DF2CF218820014265D /* Assets.xcassets */,
+				12FD65552CF315AD0070DA18 /* GeneratedDTOModels */,
+				12FD65522CF314510070DA18 /* RemoteService */,
 				12FD65482CF2604F0070DA18 /* Views */,
 				12FD65492CF2606F0070DA18 /* ViewDTOs */,
 				124407DB2CF218810014265D /* FiveSquareApp.swift */,
 				12FD65462CF2433E0070DA18 /* PlaceManager.swift */,
-				12FD654A2CF306250070DA18 /* WebserviceClient.swift */,
+				12FD65502CF314380070DA18 /* Optional+Throwing.swift */,
 			);
 			path = FiveSquare;
 			sourceTree = "<group>";
@@ -100,11 +110,29 @@
 				12FD65422CF236940070DA18 /* ListedPlacesMap.Model.swift */,
 				12FD65362CF225200070DA18 /* PlaceCard.Model.swift */,
 				12FD653E2CF230870070DA18 /* PlacesMap.Model.swift */,
+				12FD65562CF319540070DA18 /* Place+Conversions.swift */,
 			);
 			path = ViewDTOs;
 			sourceTree = "<group>";
 		};
+		12FD65522CF314510070DA18 /* RemoteService */ = {
+			isa = PBXGroup;
+			children = (
+				12FD654A2CF306250070DA18 /* WebserviceClient.swift */,
+				12FD654C2CF30E6F0070DA18 /* FoursquareAPI.swift */,
 				12FD654E2CF30FA70070DA18 /* Network.swift */,
+			);
+			path = RemoteService;
+			sourceTree = "<group>";
+		};
+		12FD65552CF315AD0070DA18 /* GeneratedDTOModels */ = {
+			isa = PBXGroup;
+			children = (
+				12FD65532CF314D90070DA18 /* PlacesResponse.swift */,
+			);
+			path = GeneratedDTOModels;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -180,9 +208,13 @@
 				12FD654B2CF306250070DA18 /* WebserviceClient.swift in Sources */,
 				12FD653F2CF230870070DA18 /* PlacesMap.Model.swift in Sources */,
 				12FD65412CF234E70070DA18 /* ListedPlacesMap.swift in Sources */,
+				12FD654D2CF30E6F0070DA18 /* FoursquareAPI.swift in Sources */,
 				12FD653D2CF2306A0070DA18 /* PlacesMap.swift in Sources */,
 				12FD65432CF236940070DA18 /* ListedPlacesMap.Model.swift in Sources */,
+				12FD65512CF314380070DA18 /* Optional+Throwing.swift in Sources */,
 				12FD65392CF229F30070DA18 /* PlacesList.swift in Sources */,
+				12FD65542CF314D90070DA18 /* PlacesResponse.swift in Sources */,
+				12FD65572CF319540070DA18 /* Place+Conversions.swift in Sources */,
 				12FD65472CF2433E0070DA18 /* PlaceManager.swift in Sources */,
 				12FD65352CF224500070DA18 /* PlaceCard.swift in Sources */,
 				12FD654F2CF30FA70070DA18 /* Network.swift in Sources */,

@@ -10,10 +10,8 @@ import MapKit
 import Observation
 
 @Observable
-class PlaceManager {
-    typealias Place = WebserviceClient.Place
-    
-    var webservice: WebserviceClient = .dummy
+class PlaceManager {    
+    var webservice: WebserviceClient = .live
 
     var places: [Place] = []
 
@@ -37,7 +35,7 @@ class PlaceManager {
 
         task = Task {
             defer { task = nil }
-            let coordinate = "\(coordinate.latitude),\( coordinate.latitude)"
+            let coordinate = "\(coordinate.latitude),\( coordinate.longitude)"
             let distance = Int(distance)
             (places, nextURL) = try await webservice.getPlaces(
                 coordinate: coordinate,
