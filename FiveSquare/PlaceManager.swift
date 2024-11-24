@@ -32,22 +32,14 @@ class PlaceManager {
     }
 
     func onSearchTap(coordinate: CLLocationCoordinate2D, distance: Double, text: String) {
-        task?.cancel()
-        places = []
-
-        task = Task {
-            defer { task = nil }
-            let coordinate = "\(coordinate.latitude),\( coordinate.longitude)"
-            let distance = Int(distance)
-            (places, nextURL) = try await webservice.getPlaces(
-                coordinate: coordinate,
-                radius: distance,
-                query: text
-            )
-        }
+        getPlaces(coordinate: coordinate, distance: distance, text: text)
     }
     
     func onSearchSubmit(coordinate: CLLocationCoordinate2D, distance: Double, text: String) {
+        getPlaces(coordinate: coordinate, distance: distance, text: text)
+    }
+    
+    private func getPlaces(coordinate: CLLocationCoordinate2D, distance: Double, text: String) {
         task?.cancel()
         places = []
 
