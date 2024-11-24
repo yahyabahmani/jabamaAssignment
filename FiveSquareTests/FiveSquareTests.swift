@@ -107,4 +107,44 @@ final class FiveSquareTests: XCTestCase {
         XCTAssertEqual(self.placesManager.places.last?.name, nextPagePlaces.last?.name)
         XCTAssertEqual(self.placesManager.nextURL, nil)
     }
+    
+    func testOnSearchSubmit() async throws {
+        // Given
+        let currentPlaces = [
+            Place(
+                id: "1",
+                geocodes: .init(main: .init(latitude: 12, longitude: 12)),
+                name: "Test-1",
+                distance: 12
+            ),
+            Place(
+                id: "2",
+                geocodes: .init(main: .init(latitude: 12, longitude: 12)),
+                name: "Test-2",
+                distance: 12
+            )
+        ]
+        
+        let expectedNextUrl = URL(string: "Test")
+        let expectation = XCTestExpectation(description: "Call Get Places")
+        self.placesManager.webservice.getPlaces = { _, _, _ in
+            expectation.fulfill()
+            return (currentPlaces, expectedNextUrl)
+        }
+        
+        // When
+        self.placesManager.onSearchSubmit(
+            coordinate: .init(latitude: 13, longitude: 13),
+            distance: 10,
+            text: "Foo"
+        )
+        
+        // Then
+        await fulfillment(of: [expectation], timeout: 10)
+        
+        // Assert
+        XCTAssertEqual(self.placesManager.places.count, currentPlaces.count)
+        XCTAssertEqual(self.placesManager.places.first?.name, "Test-1")
+        XCTAssertEqual(self.placesManager.nextURL, expectedNextUrl)
+    }
 }
