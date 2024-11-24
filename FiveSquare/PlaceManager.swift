@@ -11,21 +11,23 @@ import Observation
 
 @Observable
 class PlaceManager {
-    typealias Place = ListedPlacesMap.Model
-    var places: [Place] = dummyPlaces()
+    typealias Place = WebserviceClient.Place
+    
+    var webservice: WebserviceClient = .dummy
+
+    var places: [Place] = []
 
     var isLoading: Bool { task?.isCancelled == false }
     var task: Task<Void, Error>?
+    var nextURL: URL?
 
     func onLastAppear() {
         guard task == nil else { return }
+        guard let nextURL else { return }
 
         task = Task {
             defer { task = nil }
-            try await Task.sleep(for: .seconds(2))
-
-            // TODO: Fetch next page from server
-            places += Self.dummyPlaces()
+            (places, self.nextURL) = try await webservice.getPlacesNextPage(nextURL)
         }
     }
 
@@ -33,13 +35,15 @@ class PlaceManager {
         task?.cancel()
         places = []
 
-        // TODO: Search with the given information
         task = Task {
             defer { task = nil }
-            try await Task.sleep(for: .seconds(2))
-
-            // TODO: Fetch next page from server
-            places += Self.dummyPlaces()
+            let coordinate = "\(coordinate.latitude),\( coordinate.latitude)"
+            let distance = Int(distance)
+            (places, nextURL) = try await webservice.getPlaces(
+                coordinate: coordinate,
+                radius: distance,
+                query: nil
+            )
         }
     }
     
@@ -47,29 +51,12 @@ class PlaceManager {
         task?.cancel()
         places = []
 
-        // TODO: Search with the given information
         task = Task {
             defer { task = nil }
-            try await Task.sleep(for: .seconds(2))
-
-            // TODO: Fetch next page from server
-            places += Self.dummyPlaces()
-        }
-    }
-
-    static func dummyPlaces() -> [Place] {
-        (1...10).map {
-            let randomName = UUID().uuidString.prefix(Int.random(in: 5...15))
-
-            return .init(
-                id: "\($0)" + randomName,
-                name: String(randomName),
-                type: "Restaurant",
-                distance: $0 * 10,
-                location: .init(
-                    latitude: .random(in: 25...40),
-                    longitude: .random(in: 48...60)
-                )
+            (places, nextURL) = try await webservice.getPlaces(
+                coordinate: nil,
+                radius: nil,
+                query: text
             )
         }
     }
