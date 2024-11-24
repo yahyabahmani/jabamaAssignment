@@ -74,6 +74,10 @@ struct PlacesMap: View {
                 )
             }
         }
+        .onChange(of: places.isEmpty) {
+            guard !places.isEmpty else { return }
+            selectedMarker = places.first?.id
+        }
         .animation(.default, value: cameraPosition)
     }
 }
