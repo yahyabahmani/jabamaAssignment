@@ -12,6 +12,9 @@ struct FoursquareAPI {
     
     private let network = Network()
     
+    /// - Note: The foursquare api does not allowed grater radius.
+    private let apiRadiusLimit = 10_000
+    
     func getPlaces(coordinate: String?, radius: Int?, query: String?) async throws -> (data: PlacesResponse, nextURL: URL?) {
         let endpoint = try URL(string: BaseURL.search).unwrapped()
         
@@ -21,8 +24,8 @@ struct FoursquareAPI {
         // Create parameters using the structured model
         let params = SearchParams(
             coordinate: coordinate,
-            radius: { if let radius { "\(radius)" } else { nil }}(),
-            query: query
+            radius: { if let radius { "\(min(radius, apiRadiusLimit))" } else { nil } }(),
+            query: { if let query, !query.isEmpty { query } else { nil } }()
         )
         let encodedParams = try encoder.encode(params)
         // Convert encoded params into a dictionary to pass as query
