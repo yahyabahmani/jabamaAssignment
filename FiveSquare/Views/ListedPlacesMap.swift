@@ -14,6 +14,7 @@ struct ListedPlacesMap: View {
     @State private var selectedPlace: Model.ID?
     @State private var searchText = ""
     @FocusState private var isSearchFocused
+    @State var mapCamera: MapCamera? = nil
 
     func searchBar() -> some View {
         HStack {
@@ -33,7 +34,14 @@ struct ListedPlacesMap: View {
         .padding()
         .background(.background, in: .capsule)
         .onTapGesture { isSearchFocused = true }
-        .onSubmit(of: .text) { manager.onSearchSubmit(text: searchText) }
+        .onSubmit(of: .text) {
+            guard let mapCamera else { return }
+            manager.onSearchSubmit(
+                coordinate: mapCamera.centerCoordinate,
+                distance: mapCamera.distance,
+                text: searchText
+            )
+        }
         .padding(.horizontal)
         .animation(.spring, value: isSearchFocused)
     }
@@ -71,7 +79,8 @@ struct ListedPlacesMap: View {
         PlacesMap(
             places: manager.places.map { .init($0) },
             selectedMarker: $selectedPlace,
-            onSearchTap: manager.onSearchTap
+            onSearchTap: manager.onSearchTap, 
+            mapCamera: $mapCamera
         )
         .ignoresSafeArea(.keyboard)
         .overlay(alignment: .bottom) {

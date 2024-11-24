@@ -47,15 +47,15 @@ class PlaceManager {
         }
     }
     
-    func onSearchSubmit(text: String) {
+    func onSearchSubmit(coordinate: CLLocationCoordinate2D, distance: Double, text: String) {
         task?.cancel()
         places = []
 
         task = Task {
             defer { task = nil }
             (places, nextURL) = try await webservice.getPlaces(
-                coordinate: nil,
-                radius: nil,
+                coordinate: "\(coordinate.latitude),\( coordinate.longitude)",
+                radius: Int(distance),
                 query: text
             )
         }

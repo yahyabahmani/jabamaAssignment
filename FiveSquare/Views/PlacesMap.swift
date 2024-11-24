@@ -14,9 +14,9 @@ struct PlacesMap: View {
     
     @Binding var selectedMarker: Model.ID?
     var onSearchTap: (_ center: CLLocationCoordinate2D, _ distance: Double) -> Void = { print("Search requested at \($0) d: \($1)") }
-
+    
+    @Binding var mapCamera: MapCamera?
     @State private var cameraPosition: MapCameraPosition = .userLocation(fallback: .automatic)
-    @State private var mapCamera: MapCamera?
     @State private var showSearchButton = false
 
     var body: some View {
@@ -80,6 +80,7 @@ struct PlacesMap: View {
                 name: String(randomName)
             )
         },
-        selectedMarker: .constant(nil)
+        selectedMarker: .constant(nil), 
+        mapCamera: .constant(nil)
     )
 }
