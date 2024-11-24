@@ -27,7 +27,18 @@
 		12FD65572CF319540070DA18 /* Place+Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65562CF319540070DA18 /* Place+Conversions.swift */; };
 		12FD655B2CF346200070DA18 /* LocationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD655A2CF346200070DA18 /* LocationClient.swift */; };
 		12FD655D2CF360400070DA18 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD655C2CF360400070DA18 /* LocationManager.swift */; };
+		12FD65662CF37E060070DA18 /* FiveSquareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65652CF37E060070DA18 /* FiveSquareTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		12FD65672CF37E060070DA18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 124407D02CF218810014265D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 124407D72CF218810014265D;
+			remoteInfo = FiveSquare;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		124407D82CF218810014265D /* FiveSquare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FiveSquare.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,10 +62,19 @@
 		12FD65562CF319540070DA18 /* Place+Conversions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Place+Conversions.swift"; sourceTree = "<group>"; };
 		12FD655A2CF346200070DA18 /* LocationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationClient.swift; sourceTree = "<group>"; };
 		12FD655C2CF360400070DA18 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		12FD65632CF37E060070DA18 /* FiveSquareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FiveSquareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		12FD65652CF37E060070DA18 /* FiveSquareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveSquareTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		124407D52CF218810014265D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12FD65602CF37E060070DA18 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -68,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				124407DA2CF218810014265D /* FiveSquare */,
+				12FD65642CF37E060070DA18 /* FiveSquareTests */,
 				124407D92CF218810014265D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -76,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				124407D82CF218810014265D /* FiveSquare.app */,
+				12FD65632CF37E060070DA18 /* FiveSquareTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -147,6 +169,14 @@
 			path = LocationService;
 			sourceTree = "<group>";
 		};
+		12FD65642CF37E060070DA18 /* FiveSquareTests */ = {
+			isa = PBXGroup;
+			children = (
+				12FD65652CF37E060070DA18 /* FiveSquareTests.swift */,
+			);
+			path = FiveSquareTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -167,6 +197,24 @@
 			productReference = 124407D82CF218810014265D /* FiveSquare.app */;
 			productType = "com.apple.product-type.application";
 		};
+		12FD65622CF37E060070DA18 /* FiveSquareTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12FD65692CF37E060070DA18 /* Build configuration list for PBXNativeTarget "FiveSquareTests" */;
+			buildPhases = (
+				12FD655F2CF37E060070DA18 /* Sources */,
+				12FD65602CF37E060070DA18 /* Frameworks */,
+				12FD65612CF37E060070DA18 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				12FD65682CF37E060070DA18 /* PBXTargetDependency */,
+			);
+			name = FiveSquareTests;
+			productName = FiveSquareTests;
+			productReference = 12FD65632CF37E060070DA18 /* FiveSquareTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -179,6 +227,10 @@
 				TargetAttributes = {
 					124407D72CF218810014265D = {
 						CreatedOnToolsVersion = 15.2;
+					};
+					12FD65622CF37E060070DA18 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 124407D72CF218810014265D;
 					};
 				};
 			};
@@ -196,6 +248,7 @@
 			projectRoot = "";
 			targets = (
 				124407D72CF218810014265D /* FiveSquare */,
+				12FD65622CF37E060070DA18 /* FiveSquareTests */,
 			);
 		};
 /* End PBXProject section */
@@ -206,6 +259,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				124407E02CF218820014265D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12FD65612CF37E060070DA18 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,7 +298,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		12FD655F2CF37E060070DA18 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12FD65662CF37E060070DA18 /* FiveSquareTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		12FD65682CF37E060070DA18 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 124407D72CF218810014265D /* FiveSquare */;
+			targetProxy = 12FD65672CF37E060070DA18 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		124407E42CF218820014265D /* Debug */ = {
@@ -420,6 +496,40 @@
 			};
 			name = Release;
 		};
+		12FD656A2CF37E060070DA18 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shadiGhelman.FiveSquareTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FiveSquare.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FiveSquare";
+			};
+			name = Debug;
+		};
+		12FD656B2CF37E060070DA18 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shadiGhelman.FiveSquareTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FiveSquare.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FiveSquare";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -437,6 +547,15 @@
 			buildConfigurations = (
 				124407E72CF218820014265D /* Debug */,
 				124407E82CF218820014265D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		12FD65692CF37E060070DA18 /* Build configuration list for PBXNativeTarget "FiveSquareTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12FD656A2CF37E060070DA18 /* Debug */,
+				12FD656B2CF37E060070DA18 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
