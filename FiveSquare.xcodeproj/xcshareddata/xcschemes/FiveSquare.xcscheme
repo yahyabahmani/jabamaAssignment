@@ -62,13 +62,6 @@
             ReferencedContainer = "container:FiveSquare.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "Authorization"
-            value = "fsq3diTby8uGYho3mha8dId+TXh5h2kFxhnfO1GFe4LSkgk="
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

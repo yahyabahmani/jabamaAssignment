@@ -24,9 +24,9 @@ public class Network {
         var request = try URLRequest(url: components.url.unwrapped())
         
         // Set default headers
-        request.allHTTPHeaderFields = try [
+        request.allHTTPHeaderFields = [
             "Accept": "application/json",
-            "Authorization": ProcessInfo.processInfo.environment["Authorization"].unwrapped()
+            "Authorization": /*@START_MENU_TOKEN@*//*@PLACEHOLDER=API-KEY@*/"fsq3diTby8uGYho3mha8dId+TXh5h2kFxhnfO1GFe4LSkgk="/*@END_MENU_TOKEN@*/
         ]
         
         // Perform the network request
