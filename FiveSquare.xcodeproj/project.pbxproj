@@ -26,6 +26,7 @@
 		12FD65542CF314D90070DA18 /* PlacesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65532CF314D90070DA18 /* PlacesResponse.swift */; };
 		12FD65572CF319540070DA18 /* Place+Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65562CF319540070DA18 /* Place+Conversions.swift */; };
 		12FD655B2CF346200070DA18 /* LocationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD655A2CF346200070DA18 /* LocationClient.swift */; };
+		12FD655D2CF360400070DA18 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD655C2CF360400070DA18 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		12FD65532CF314D90070DA18 /* PlacesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesResponse.swift; sourceTree = "<group>"; };
 		12FD65562CF319540070DA18 /* Place+Conversions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Place+Conversions.swift"; sourceTree = "<group>"; };
 		12FD655A2CF346200070DA18 /* LocationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationClient.swift; sourceTree = "<group>"; };
+		12FD655C2CF360400070DA18 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,12 +85,12 @@
 			children = (
 				124407DF2CF218820014265D /* Assets.xcassets */,
 				12FD65552CF315AD0070DA18 /* GeneratedDTOModels */,
+				12FD655E2CF360570070DA18 /* LocationService */,
 				12FD65522CF314510070DA18 /* RemoteService */,
 				12FD65482CF2604F0070DA18 /* Views */,
 				12FD65492CF2606F0070DA18 /* ViewDTOs */,
 				124407DB2CF218810014265D /* FiveSquareApp.swift */,
 				12FD65462CF2433E0070DA18 /* PlaceManager.swift */,
-				12FD655A2CF346200070DA18 /* LocationClient.swift */,
 				12FD65502CF314380070DA18 /* Optional+Throwing.swift */,
 			);
 			path = FiveSquare;
@@ -134,6 +136,15 @@
 				12FD65532CF314D90070DA18 /* PlacesResponse.swift */,
 			);
 			path = GeneratedDTOModels;
+			sourceTree = "<group>";
+		};
+		12FD655E2CF360570070DA18 /* LocationService */ = {
+			isa = PBXGroup;
+			children = (
+				12FD655A2CF346200070DA18 /* LocationClient.swift */,
+				12FD655C2CF360400070DA18 /* LocationManager.swift */,
+			);
+			path = LocationService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,6 +233,7 @@
 				12FD65472CF2433E0070DA18 /* PlaceManager.swift in Sources */,
 				12FD65352CF224500070DA18 /* PlaceCard.swift in Sources */,
 				12FD654F2CF30FA70070DA18 /* Network.swift in Sources */,
+				12FD655D2CF360400070DA18 /* LocationManager.swift in Sources */,
 				124407DC2CF218810014265D /* FiveSquareApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
