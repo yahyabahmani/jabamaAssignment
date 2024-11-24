@@ -31,7 +31,7 @@ class PlaceManager {
         }
     }
 
-    func onSearchTap(coordinate: CLLocationCoordinate2D, distance: Double) {
+    func onSearchTap(coordinate: CLLocationCoordinate2D, distance: Double, text: String) {
         task?.cancel()
         places = []
 
@@ -42,7 +42,7 @@ class PlaceManager {
             (places, nextURL) = try await webservice.getPlaces(
                 coordinate: coordinate,
                 radius: distance,
-                query: nil
+                query: text
             )
         }
     }

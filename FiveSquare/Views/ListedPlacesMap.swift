@@ -79,7 +79,9 @@ struct ListedPlacesMap: View {
         PlacesMap(
             places: manager.places.map { .init($0) },
             selectedMarker: $selectedPlace,
-            onSearchTap: manager.onSearchTap, 
+            onSearchTap: { (coordinate, distance) in
+                manager.onSearchTap(coordinate: coordinate, distance: distance, text: searchText)
+            },
             mapCamera: $mapCamera
         )
         .ignoresSafeArea(.keyboard)
