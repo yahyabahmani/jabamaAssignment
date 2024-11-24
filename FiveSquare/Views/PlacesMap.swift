@@ -10,7 +10,8 @@ import SwiftUI
 
 struct PlacesMap: View {
     var places: [Model]
-
+    var locationManager = LocationClient.live
+    
     @Binding var selectedMarker: Model.ID?
     var onSearchTap: (_ center: CLLocationCoordinate2D, _ distance: Double) -> Void = { print("Search requested at \($0) d: \($1)") }
 
@@ -62,6 +63,7 @@ struct PlacesMap: View {
             }
         }
         .animation(.spring, value: showSearchButton)
+        .onAppear { try? locationManager.requestAuthorization() }
     }
 }
 

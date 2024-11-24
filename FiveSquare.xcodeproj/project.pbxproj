@@ -25,6 +25,7 @@
 		12FD65512CF314380070DA18 /* Optional+Throwing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65502CF314380070DA18 /* Optional+Throwing.swift */; };
 		12FD65542CF314D90070DA18 /* PlacesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65532CF314D90070DA18 /* PlacesResponse.swift */; };
 		12FD65572CF319540070DA18 /* Place+Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65562CF319540070DA18 /* Place+Conversions.swift */; };
+		12FD655B2CF346200070DA18 /* LocationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD655A2CF346200070DA18 /* LocationClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		12FD65502CF314380070DA18 /* Optional+Throwing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Throwing.swift"; sourceTree = "<group>"; };
 		12FD65532CF314D90070DA18 /* PlacesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesResponse.swift; sourceTree = "<group>"; };
 		12FD65562CF319540070DA18 /* Place+Conversions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Place+Conversions.swift"; sourceTree = "<group>"; };
+		12FD655A2CF346200070DA18 /* LocationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				12FD65492CF2606F0070DA18 /* ViewDTOs */,
 				124407DB2CF218810014265D /* FiveSquareApp.swift */,
 				12FD65462CF2433E0070DA18 /* PlaceManager.swift */,
+				12FD655A2CF346200070DA18 /* LocationClient.swift */,
 				12FD65502CF314380070DA18 /* Optional+Throwing.swift */,
 			);
 			path = FiveSquare;
@@ -209,6 +212,7 @@
 				12FD653F2CF230870070DA18 /* PlacesMap.Model.swift in Sources */,
 				12FD65412CF234E70070DA18 /* ListedPlacesMap.swift in Sources */,
 				12FD654D2CF30E6F0070DA18 /* FoursquareAPI.swift in Sources */,
+				12FD655B2CF346200070DA18 /* LocationClient.swift in Sources */,
 				12FD653D2CF2306A0070DA18 /* PlacesMap.swift in Sources */,
 				12FD65432CF236940070DA18 /* ListedPlacesMap.Model.swift in Sources */,
 				12FD65512CF314380070DA18 /* Optional+Throwing.swift in Sources */,
@@ -352,6 +356,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = A26R4SND6W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
@@ -381,6 +386,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = A26R4SND6W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
