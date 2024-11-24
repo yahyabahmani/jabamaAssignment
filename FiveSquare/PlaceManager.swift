@@ -25,7 +25,9 @@ class PlaceManager {
 
         task = Task {
             defer { task = nil }
-            (places, self.nextURL) = try await webservice.getPlacesNextPage(nextURL)
+            let (placesList, nextURL) = try await webservice.getPlacesNextPage(nextURL)
+            places.append(contentsOf: placesList)
+            self.nextURL = nextURL
         }
     }
 
