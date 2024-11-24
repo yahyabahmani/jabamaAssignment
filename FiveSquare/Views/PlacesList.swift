@@ -38,7 +38,7 @@ struct PlacesList: View {
         }
     }
 
-    var body: some View {
+    private func scrollView() -> some View {
         ScrollView(axes) {
             layout {
                 ForEach(places) { place in
@@ -46,6 +46,7 @@ struct PlacesList: View {
                         .containerRelativeFrame(.horizontal) { length, _ in
                             length - extraPadding
                         }
+                        .id(place.id)
                 }
 
                 if isLoading {
@@ -72,6 +73,15 @@ struct PlacesList: View {
             if scrollPosition == places.last?.id {
                 onLastAppear()
             }
+        }
+    }
+    
+    var body: some View {
+        ScrollViewReader { proxy in
+            scrollView()
+                .onChange(of: isScrolling) {
+                    proxy.scrollTo(scrollPosition, anchor: .center)
+                }
         }
     }
 }
