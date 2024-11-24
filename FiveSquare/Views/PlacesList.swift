@@ -17,6 +17,7 @@ struct PlacesList: View {
     var onLastAppear: () -> Void = { print("Last item appeared") }
     var isLoading: Bool = false
 
+    @State private var isScrolling = false
     private let extraPadding: CGFloat = 16
 
     private func placeholderCard() -> some View {
@@ -58,6 +59,11 @@ struct PlacesList: View {
             .frame(maxHeight: axes == .horizontal ? 120 : .infinity)
             // Add some space for the scrollbar
             .padding(.bottom)
+            // Observe scroll movements
+            .onScroll(
+                started: { isScrolling = true },
+                finished: { isScrolling = false }
+            )
         }
         .scrollPosition(id: $scrollPosition, anchor: .bottom)
         .safeAreaPadding(.horizontal, axes == .horizontal ? 20 : 0)

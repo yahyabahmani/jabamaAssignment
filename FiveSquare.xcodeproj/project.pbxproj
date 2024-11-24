@@ -28,6 +28,7 @@
 		12FD655B2CF346200070DA18 /* LocationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD655A2CF346200070DA18 /* LocationClient.swift */; };
 		12FD655D2CF360400070DA18 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD655C2CF360400070DA18 /* LocationManager.swift */; };
 		12FD65662CF37E060070DA18 /* FiveSquareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65652CF37E060070DA18 /* FiveSquareTests.swift */; };
+		12FD656D2CF3D18E0070DA18 /* View.onScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD656C2CF3D18E0070DA18 /* View.onScroll.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		12FD655C2CF360400070DA18 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		12FD65632CF37E060070DA18 /* FiveSquareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FiveSquareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		12FD65652CF37E060070DA18 /* FiveSquareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveSquareTests.swift; sourceTree = "<group>"; };
+		12FD656C2CF3D18E0070DA18 /* View.onScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.onScroll.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				12FD65492CF2606F0070DA18 /* ViewDTOs */,
 				124407DB2CF218810014265D /* FiveSquareApp.swift */,
 				12FD65462CF2433E0070DA18 /* PlaceManager.swift */,
+				12FD656C2CF3D18E0070DA18 /* View.onScroll.swift */,
 				12FD65502CF314380070DA18 /* Optional+Throwing.swift */,
 			);
 			path = FiveSquare;
@@ -282,6 +285,7 @@
 				12FD654B2CF306250070DA18 /* WebserviceClient.swift in Sources */,
 				12FD653F2CF230870070DA18 /* PlacesMap.Model.swift in Sources */,
 				12FD65412CF234E70070DA18 /* ListedPlacesMap.swift in Sources */,
+				12FD656D2CF3D18E0070DA18 /* View.onScroll.swift in Sources */,
 				12FD654D2CF30E6F0070DA18 /* FoursquareAPI.swift in Sources */,
 				12FD655B2CF346200070DA18 /* LocationClient.swift in Sources */,
 				12FD653D2CF2306A0070DA18 /* PlacesMap.swift in Sources */,
