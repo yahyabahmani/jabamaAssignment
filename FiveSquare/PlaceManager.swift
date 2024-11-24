@@ -53,9 +53,11 @@ class PlaceManager {
 
         task = Task {
             defer { task = nil }
+            let coordinate = "\(coordinate.latitude),\( coordinate.longitude)"
+            let distance = Int(distance)
             (places, nextURL) = try await webservice.getPlaces(
-                coordinate: "\(coordinate.latitude),\( coordinate.longitude)",
-                radius: Int(distance),
+                coordinate: coordinate,
+                radius: distance,
                 query: text
             )
         }
