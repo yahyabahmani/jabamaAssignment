@@ -1,0 +1,570 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		124407DC2CF218810014265D /* FiveSquareApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124407DB2CF218810014265D /* FiveSquareApp.swift */; };
+		124407DE2CF218810014265D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124407DD2CF218810014265D /* ContentView.swift */; };
+		124407E02CF218820014265D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 124407DF2CF218820014265D /* Assets.xcassets */; };
+		12FD65352CF224500070DA18 /* PlaceCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65342CF224500070DA18 /* PlaceCard.swift */; };
+		12FD65372CF225200070DA18 /* PlaceCard.Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65362CF225200070DA18 /* PlaceCard.Model.swift */; };
+		12FD65392CF229F30070DA18 /* PlacesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65382CF229F30070DA18 /* PlacesList.swift */; };
+		12FD653D2CF2306A0070DA18 /* PlacesMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD653C2CF2306A0070DA18 /* PlacesMap.swift */; };
+		12FD653F2CF230870070DA18 /* PlacesMap.Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD653E2CF230870070DA18 /* PlacesMap.Model.swift */; };
+		12FD65412CF234E70070DA18 /* ListedPlacesMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65402CF234E70070DA18 /* ListedPlacesMap.swift */; };
+		12FD65432CF236940070DA18 /* ListedPlacesMap.Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65422CF236940070DA18 /* ListedPlacesMap.Model.swift */; };
+		12FD65452CF239970070DA18 /* ListedPlacesMap+Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65442CF239970070DA18 /* ListedPlacesMap+Conversions.swift */; };
+		12FD65472CF2433E0070DA18 /* PlaceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65462CF2433E0070DA18 /* PlaceManager.swift */; };
+		12FD654B2CF306250070DA18 /* WebserviceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD654A2CF306250070DA18 /* WebserviceClient.swift */; };
+		12FD654D2CF30E6F0070DA18 /* FoursquareAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD654C2CF30E6F0070DA18 /* FoursquareAPI.swift */; };
+		12FD654F2CF30FA70070DA18 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD654E2CF30FA70070DA18 /* Network.swift */; };
+		12FD65512CF314380070DA18 /* Optional+Throwing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65502CF314380070DA18 /* Optional+Throwing.swift */; };
+		12FD65542CF314D90070DA18 /* PlacesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65532CF314D90070DA18 /* PlacesResponse.swift */; };
+		12FD65572CF319540070DA18 /* Place+Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65562CF319540070DA18 /* Place+Conversions.swift */; };
+		12FD655B2CF346200070DA18 /* LocationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD655A2CF346200070DA18 /* LocationClient.swift */; };
+		12FD655D2CF360400070DA18 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD655C2CF360400070DA18 /* LocationManager.swift */; };
+		12FD65662CF37E060070DA18 /* FiveSquareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD65652CF37E060070DA18 /* FiveSquareTests.swift */; };
+		12FD656D2CF3D18E0070DA18 /* View.onScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD656C2CF3D18E0070DA18 /* View.onScroll.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		12FD65672CF37E060070DA18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 124407D02CF218810014265D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 124407D72CF218810014265D;
+			remoteInfo = FiveSquare;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		124407D82CF218810014265D /* FiveSquare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FiveSquare.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		124407DB2CF218810014265D /* FiveSquareApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveSquareApp.swift; sourceTree = "<group>"; };
+		124407DD2CF218810014265D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		124407DF2CF218820014265D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		12FD65342CF224500070DA18 /* PlaceCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceCard.swift; sourceTree = "<group>"; };
+		12FD65362CF225200070DA18 /* PlaceCard.Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCard.Model.swift; sourceTree = "<group>"; };
+		12FD65382CF229F30070DA18 /* PlacesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesList.swift; sourceTree = "<group>"; };
+		12FD653C2CF2306A0070DA18 /* PlacesMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesMap.swift; sourceTree = "<group>"; };
+		12FD653E2CF230870070DA18 /* PlacesMap.Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesMap.Model.swift; sourceTree = "<group>"; };
+		12FD65402CF234E70070DA18 /* ListedPlacesMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListedPlacesMap.swift; sourceTree = "<group>"; };
+		12FD65422CF236940070DA18 /* ListedPlacesMap.Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListedPlacesMap.Model.swift; sourceTree = "<group>"; };
+		12FD65442CF239970070DA18 /* ListedPlacesMap+Conversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListedPlacesMap+Conversions.swift"; sourceTree = "<group>"; };
+		12FD65462CF2433E0070DA18 /* PlaceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceManager.swift; sourceTree = "<group>"; };
+		12FD654A2CF306250070DA18 /* WebserviceClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebserviceClient.swift; sourceTree = "<group>"; };
+		12FD654C2CF30E6F0070DA18 /* FoursquareAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoursquareAPI.swift; sourceTree = "<group>"; };
+		12FD654E2CF30FA70070DA18 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		12FD65502CF314380070DA18 /* Optional+Throwing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Throwing.swift"; sourceTree = "<group>"; };
+		12FD65532CF314D90070DA18 /* PlacesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesResponse.swift; sourceTree = "<group>"; };
+		12FD65562CF319540070DA18 /* Place+Conversions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Place+Conversions.swift"; sourceTree = "<group>"; };
+		12FD655A2CF346200070DA18 /* LocationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationClient.swift; sourceTree = "<group>"; };
+		12FD655C2CF360400070DA18 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		12FD65632CF37E060070DA18 /* FiveSquareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FiveSquareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		12FD65652CF37E060070DA18 /* FiveSquareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveSquareTests.swift; sourceTree = "<group>"; };
+		12FD656C2CF3D18E0070DA18 /* View.onScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.onScroll.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		124407D52CF218810014265D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12FD65602CF37E060070DA18 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		124407CF2CF218810014265D = {
+			isa = PBXGroup;
+			children = (
+				124407DA2CF218810014265D /* FiveSquare */,
+				12FD65642CF37E060070DA18 /* FiveSquareTests */,
+				124407D92CF218810014265D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		124407D92CF218810014265D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				124407D82CF218810014265D /* FiveSquare.app */,
+				12FD65632CF37E060070DA18 /* FiveSquareTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		124407DA2CF218810014265D /* FiveSquare */ = {
+			isa = PBXGroup;
+			children = (
+				124407DF2CF218820014265D /* Assets.xcassets */,
+				12FD65552CF315AD0070DA18 /* GeneratedDTOModels */,
+				12FD655E2CF360570070DA18 /* LocationService */,
+				12FD65522CF314510070DA18 /* RemoteService */,
+				12FD65482CF2604F0070DA18 /* Views */,
+				12FD65492CF2606F0070DA18 /* ViewDTOs */,
+				124407DB2CF218810014265D /* FiveSquareApp.swift */,
+				12FD65462CF2433E0070DA18 /* PlaceManager.swift */,
+				12FD656C2CF3D18E0070DA18 /* View.onScroll.swift */,
+				12FD65502CF314380070DA18 /* Optional+Throwing.swift */,
+			);
+			path = FiveSquare;
+			sourceTree = "<group>";
+		};
+		12FD65482CF2604F0070DA18 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				124407DD2CF218810014265D /* ContentView.swift */,
+				12FD65402CF234E70070DA18 /* ListedPlacesMap.swift */,
+				12FD65342CF224500070DA18 /* PlaceCard.swift */,
+				12FD65382CF229F30070DA18 /* PlacesList.swift */,
+				12FD653C2CF2306A0070DA18 /* PlacesMap.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		12FD65492CF2606F0070DA18 /* ViewDTOs */ = {
+			isa = PBXGroup;
+			children = (
+				12FD65442CF239970070DA18 /* ListedPlacesMap+Conversions.swift */,
+				12FD65422CF236940070DA18 /* ListedPlacesMap.Model.swift */,
+				12FD65362CF225200070DA18 /* PlaceCard.Model.swift */,
+				12FD653E2CF230870070DA18 /* PlacesMap.Model.swift */,
+				12FD65562CF319540070DA18 /* Place+Conversions.swift */,
+			);
+			path = ViewDTOs;
+			sourceTree = "<group>";
+		};
+		12FD65522CF314510070DA18 /* RemoteService */ = {
+			isa = PBXGroup;
+			children = (
+				12FD654A2CF306250070DA18 /* WebserviceClient.swift */,
+				12FD654C2CF30E6F0070DA18 /* FoursquareAPI.swift */,
+				12FD654E2CF30FA70070DA18 /* Network.swift */,
+			);
+			path = RemoteService;
+			sourceTree = "<group>";
+		};
+		12FD65552CF315AD0070DA18 /* GeneratedDTOModels */ = {
+			isa = PBXGroup;
+			children = (
+				12FD65532CF314D90070DA18 /* PlacesResponse.swift */,
+			);
+			path = GeneratedDTOModels;
+			sourceTree = "<group>";
+		};
+		12FD655E2CF360570070DA18 /* LocationService */ = {
+			isa = PBXGroup;
+			children = (
+				12FD655A2CF346200070DA18 /* LocationClient.swift */,
+				12FD655C2CF360400070DA18 /* LocationManager.swift */,
+			);
+			path = LocationService;
+			sourceTree = "<group>";
+		};
+		12FD65642CF37E060070DA18 /* FiveSquareTests */ = {
+			isa = PBXGroup;
+			children = (
+				12FD65652CF37E060070DA18 /* FiveSquareTests.swift */,
+			);
+			path = FiveSquareTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		124407D72CF218810014265D /* FiveSquare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 124407E62CF218820014265D /* Build configuration list for PBXNativeTarget "FiveSquare" */;
+			buildPhases = (
+				124407D42CF218810014265D /* Sources */,
+				124407D52CF218810014265D /* Frameworks */,
+				124407D62CF218810014265D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FiveSquare;
+			productName = FiveSquare;
+			productReference = 124407D82CF218810014265D /* FiveSquare.app */;
+			productType = "com.apple.product-type.application";
+		};
+		12FD65622CF37E060070DA18 /* FiveSquareTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12FD65692CF37E060070DA18 /* Build configuration list for PBXNativeTarget "FiveSquareTests" */;
+			buildPhases = (
+				12FD655F2CF37E060070DA18 /* Sources */,
+				12FD65602CF37E060070DA18 /* Frameworks */,
+				12FD65612CF37E060070DA18 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				12FD65682CF37E060070DA18 /* PBXTargetDependency */,
+			);
+			name = FiveSquareTests;
+			productName = FiveSquareTests;
+			productReference = 12FD65632CF37E060070DA18 /* FiveSquareTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		124407D02CF218810014265D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					124407D72CF218810014265D = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					12FD65622CF37E060070DA18 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 124407D72CF218810014265D;
+					};
+				};
+			};
+			buildConfigurationList = 124407D32CF218810014265D /* Build configuration list for PBXProject "FiveSquare" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 124407CF2CF218810014265D;
+			productRefGroup = 124407D92CF218810014265D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				124407D72CF218810014265D /* FiveSquare */,
+				12FD65622CF37E060070DA18 /* FiveSquareTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		124407D62CF218810014265D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				124407E02CF218820014265D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12FD65612CF37E060070DA18 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		124407D42CF218810014265D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12FD65452CF239970070DA18 /* ListedPlacesMap+Conversions.swift in Sources */,
+				12FD65372CF225200070DA18 /* PlaceCard.Model.swift in Sources */,
+				124407DE2CF218810014265D /* ContentView.swift in Sources */,
+				12FD654B2CF306250070DA18 /* WebserviceClient.swift in Sources */,
+				12FD653F2CF230870070DA18 /* PlacesMap.Model.swift in Sources */,
+				12FD65412CF234E70070DA18 /* ListedPlacesMap.swift in Sources */,
+				12FD656D2CF3D18E0070DA18 /* View.onScroll.swift in Sources */,
+				12FD654D2CF30E6F0070DA18 /* FoursquareAPI.swift in Sources */,
+				12FD655B2CF346200070DA18 /* LocationClient.swift in Sources */,
+				12FD653D2CF2306A0070DA18 /* PlacesMap.swift in Sources */,
+				12FD65432CF236940070DA18 /* ListedPlacesMap.Model.swift in Sources */,
+				12FD65512CF314380070DA18 /* Optional+Throwing.swift in Sources */,
+				12FD65392CF229F30070DA18 /* PlacesList.swift in Sources */,
+				12FD65542CF314D90070DA18 /* PlacesResponse.swift in Sources */,
+				12FD65572CF319540070DA18 /* Place+Conversions.swift in Sources */,
+				12FD65472CF2433E0070DA18 /* PlaceManager.swift in Sources */,
+				12FD65352CF224500070DA18 /* PlaceCard.swift in Sources */,
+				12FD654F2CF30FA70070DA18 /* Network.swift in Sources */,
+				12FD655D2CF360400070DA18 /* LocationManager.swift in Sources */,
+				124407DC2CF218810014265D /* FiveSquareApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12FD655F2CF37E060070DA18 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12FD65662CF37E060070DA18 /* FiveSquareTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		12FD65682CF37E060070DA18 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 124407D72CF218810014265D /* FiveSquare */;
+			targetProxy = 12FD65672CF37E060070DA18 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		124407E42CF218820014265D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		124407E52CF218820014265D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		124407E72CF218820014265D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = A26R4SND6W;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shadiGhelman.FiveSquare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		124407E82CF218820014265D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = A26R4SND6W;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shadiGhelman.FiveSquare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		12FD656A2CF37E060070DA18 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shadiGhelman.FiveSquareTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FiveSquare.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FiveSquare";
+			};
+			name = Debug;
+		};
+		12FD656B2CF37E060070DA18 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shadiGhelman.FiveSquareTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FiveSquare.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FiveSquare";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		124407D32CF218810014265D /* Build configuration list for PBXProject "FiveSquare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				124407E42CF218820014265D /* Debug */,
+				124407E52CF218820014265D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		124407E62CF218820014265D /* Build configuration list for PBXNativeTarget "FiveSquare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				124407E72CF218820014265D /* Debug */,
+				124407E82CF218820014265D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		12FD65692CF37E060070DA18 /* Build configuration list for PBXNativeTarget "FiveSquareTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12FD656A2CF37E060070DA18 /* Debug */,
+				12FD656B2CF37E060070DA18 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 124407D02CF218810014265D /* Project object */;
+}
