@@ -6,10 +6,10 @@ import Foundation
 import UIKit
 
 struct NetworkUtil {
-    private let base = Constants.BASE_URL
+    private let base = AppConstants.BASE_URL
 
     static func getApiUrl(of apiAddress: String) -> URL {
-        Constants.BASE_URL.appendingPathComponent(apiAddress)
+        AppConstants.BASE_URL.appendingPathComponent(apiAddress)
     }
 
     static func logRequest(request: URLRequest?) {

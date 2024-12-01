@@ -9,13 +9,12 @@ import Foundation
 import Combine
 
 struct NetworkAgent {
-    init() {
+    
+    let networkReachability = NetworkReachability()
+    func runReq<T: Codable>(_ request: URLRequest, isJson: Bool = true) -> AnyPublisher<T, ErrorModel> {
 #if DEBUG
         NetworkUtil.logRequest(request: request)
 #endif
-    }
-    let networkReachability = NetworkReachability()
-    func runReq<T: Codable>(_ request: URLRequest, isJson: Bool = true) -> AnyPublisher<T, ErrorModel> {
         
         return URLSession.shared
             .dataTaskPublisher(for: request)

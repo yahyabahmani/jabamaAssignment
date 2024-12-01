@@ -8,7 +8,7 @@
 import Foundation
 
 class RequestBuilder {
-    private(set) var baseURL: URL = Constants.BASE_URL
+    private(set) var baseURL: URL = AppConstants.BASE_URL
     private(set) var endpoint: String = ""
     private(set) var method: HttpMethod = .get
     private(set) var headers: [String: String] = [:]
@@ -22,7 +22,7 @@ class RequestBuilder {
 
 
 
-    public func setBaseUrl(_ url: URL = Constants.BASE_URL) -> RequestBuilder {
+    public func setBaseUrl(_ url: URL = AppConstants.BASE_URL) -> RequestBuilder {
         self.baseURL = url
         return self
     }
@@ -92,8 +92,8 @@ class RequestBuilder {
             urlRequest.httpBody = body
         }
        // add token header
-        if let token = AppUtils.getToken(){
-            headers["Authorization"] = "Bearer \(token)"
+        if !AppConstants.API_KEY.isEmpty{
+            headers["Authorization"] = AppConstants.API_KEY
         }
         for header in headers {
             urlRequest.addValue(header.value, forHTTPHeaderField: header.key)
