@@ -6,5 +6,5 @@
 //
 
 enum ProductListEvent {
-    
+    case changeViewType
 }

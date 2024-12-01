@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		82DD078F2CFD045A000DEE75 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 82DD078E2CFD045A000DEE75 /* SDWebImageSwiftUI */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		821AA5C32CFCD70C0049EF3A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -65,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82DD078F2CFD045A000DEE75 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +130,7 @@
 			);
 			name = Jabama;
 			packageProductDependencies = (
+				82DD078E2CFD045A000DEE75 /* SDWebImageSwiftUI */,
 			);
 			productName = Jabama;
 			productReference = 821AA5B22CFCD70B0049EF3A /* Jabama.app */;
@@ -208,6 +214,9 @@
 			);
 			mainGroup = 821AA5A92CFCD70B0049EF3A;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				82DD078D2CFD045A000DEE75 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 821AA5B32CFCD70B0049EF3A /* Products */;
 			projectDirPath = "";
@@ -583,6 +592,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		82DD078D2CFD045A000DEE75 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		82DD078E2CFD045A000DEE75 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 82DD078D2CFD045A000DEE75 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 821AA5AA2CFCD70B0049EF3A /* Project object */;
 }

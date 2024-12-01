@@ -7,34 +7,34 @@
 
 import Foundation
 
-struct SearchPlace:Codable{
-    let id:String
-    let categories: [Category]
-    let closedBucket: String
-    let dateClosed: String
-    let description: String
-    let distance: Int
-    let email: String
-    let fax: String
-    let geocodes: Geocodes
-    let hours: Hours
-    let hoursPopular: [PopularHour]
-    let link: String
-    let location: ProductLocation
-    let menu: String
-    let name: String
-    let photos: [Photo]
-    let popularity: Int
-    let price: Int
-    let rating: Int
-    let stats: Stats
-    let tastes: [String]
-    let tel: String
-    let timezone: String
-    let tips: [Tip]
-    let venueRealityBucket: String
-    let verified: Bool
-    let website: String
+struct SearchPlace:Codable,Identifiable{
+    let id:String?
+    let categories: [Category]?
+    let closedBucket: String?
+    let dateClosed: String?
+    let description: String?
+    let distance: Int?
+    let email: String?
+    let fax: String?
+    let geocodes: Geocodes?
+    let hours: Hours?
+    let hoursPopular: [PopularHour]?
+    let link: String?
+    let location: ProductLocation?
+    let menu: String?
+    let name: String?
+    let photos: [Photo]?
+    let popularity: Int?
+    let price: Int?
+    let rating: Int?
+    let stats: Stats?
+    let tastes: [String]?
+    let tel: String?
+    let timezone: String?
+    let tips: [Tip]?
+    let venueRealityBucket: String?
+    let verified: Bool?
+    let website: String?
     
     
     enum CodingKeys:  String, CodingKey {

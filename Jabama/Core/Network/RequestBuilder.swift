@@ -51,6 +51,12 @@ class RequestBuilder {
         self.parameters[key] = value
         return self
     }
+    
+    public func addParameters(_ value: [String: Any])-> RequestBuilder  {
+        self.parameters.merge(value) { (_, new) in new }
+        return self
+    }
+    
     public func setBody(_ value: Data?)-> RequestBuilder  {
         self.body = value
         return self
