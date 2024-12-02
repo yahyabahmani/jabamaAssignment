@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 struct SearchPlace:Codable,Identifiable,Equatable{
     let id:String?
@@ -77,5 +78,9 @@ extension SearchPlace{
     
     func lastTip()->String{
         return tips?.last?.text ?? ""
+    }
+    
+    func geoLocation()->CLLocationCoordinate2D{
+        return CLLocationCoordinate2D(latitude: geocodes?.main?.latitude ?? 0, longitude: geocodes?.main?.longitude ?? 0)
     }
 }

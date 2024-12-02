@@ -32,7 +32,7 @@ struct PlaceItemView: View {
                         .font(.headline)
                         .fontWeight(.semibold)
                         .foregroundColor(.black)
-                        .lineLimit(2)
+                        .lineLimit(1)
                         .multilineTextAlignment(.leading)
                         .padding(.trailing,52)
                     

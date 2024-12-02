@@ -19,9 +19,17 @@ struct PlaceListMainView: View {
                 ZStack(alignment:.top){
                     SearchPlaceToolbar()
                         .environment(viewModel)
-                    PlaceListStateView()
-                        .padding(.top,60)
-                        .environment(viewModel)
+                        .zIndex(1)
+                    if viewModel.viewType == .map{
+                        PlaceListMapView()
+                            .environment(viewModel)
+                            .environment(locationManager)
+                    }else{
+                        PlaceListStateView()
+                            .padding(.top,60)
+                            .environment(viewModel)
+                    }
+                    
                 }
             }.onChange(of: locationManager.applocation){
                 viewModel.onEvent(.onLocationChange($1))
