@@ -21,7 +21,7 @@ struct PlaceListMainView: View {
                         .environment(viewModel)
                         .zIndex(1)
                     if viewModel.viewType == .map{
-                        PlaceListMapView()
+                        MapMainView()
                             .environment(viewModel)
                             .environment(locationManager)
                     }else{

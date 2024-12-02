@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MapPlaceListView: View {
     @Environment(PlaceListMainViewModel.self) var mainViewModel
-    @Environment(PlaceListMapViewModel.self) var mapViewModel
+    @Environment(MapViewModel.self) var mapViewModel
     var body: some View {
         ScrollView(.horizontal,showsIndicators: false){
             LazyHStack(spacing:12){
@@ -37,7 +37,7 @@ struct MapPlaceListView: View {
 
 #Preview {
     @Previewable @State var mainViewModel: PlaceListMainViewModel = .init()
-    @Previewable @State var mapViewModel: PlaceListMapViewModel = .init()
+    @Previewable @State var mapViewModel: MapViewModel = .init()
     MapPlaceListView()
         .environment(mainViewModel)
         .environment(mapViewModel)

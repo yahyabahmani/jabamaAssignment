@@ -1,10 +1,10 @@
 //
-//  PlaceListMapEvent.swift
+//  MapEvent.swift
 //  Jabama
 //
 //  Created by Mohsen on 12/2/24.
 //
 
-enum PlaceListMapEvent {
+enum MapEvent {
     case onPlaceSelcted(SearchPlace)
 }

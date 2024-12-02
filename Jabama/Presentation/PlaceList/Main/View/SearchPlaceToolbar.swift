@@ -37,13 +37,21 @@ struct SearchPlaceToolbar: View {
                 Button{
                     viewModel.onEvent(.changeViewType)
                 }label: {
+                    if viewModel.viewState == .loading{
+                        ProgressView()
+                            .tint(.white)
+                            .frame(width: 30, height: 30)
+                    }else{
                         Image(systemName: viewModel.viewType.image)
                             .foregroundColor(.white)
                             .font(.title)
                             .fontWeight(.semibold)
                             .contentTransition(.symbolEffect(.replace, options: .nonRepeating))
                             .frame(width: 30, height: 30)
+                    }
+                        
                 }
+                .disabled(viewModel.viewState == .loading)
             }
             .padding(.horizontal,24)
             .padding(.vertical)

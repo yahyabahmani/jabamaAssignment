@@ -1,5 +1,5 @@
 //
-//  PlaceListMapView.swift
+//  MapMainView.swift
 //  Jabama
 //
 //  Created by Mohsen on 12/2/24.
@@ -8,10 +8,10 @@
 import SwiftUI
 import MapKit
 
-struct PlaceListMapView: View {
+struct MapMainView: View {
     @Environment(PlaceListMainViewModel.self) var mainViewModel
     @Environment(LocationManager.self) var locationManager
-    @State private var mapViewModel: PlaceListMapViewModel = .init()
+    @State private var mapViewModel: MapViewModel = .init()
     
     @State private var cameraPosition: MapCameraPosition = .userLocation(fallback: .automatic)
     
@@ -27,7 +27,7 @@ struct PlaceListMapView: View {
                 .environment(mainViewModel)
                 .environment(mapViewModel)
                 
-                MapPlaceListView()
+                MapStateView()
                     .environment(mainViewModel)
                     .environment(mapViewModel)
             }
@@ -48,7 +48,7 @@ struct PlaceListMapView: View {
 #Preview {
     @Previewable @State var viewModel: PlaceListMainViewModel = .init()
     @Previewable @State var locationManager: LocationManager = .init()
-    PlaceListMapView()
+    MapMainView()
         .environment(viewModel)
         .environment(locationManager)
 }
