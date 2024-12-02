@@ -32,7 +32,11 @@ struct PlaceListMainView: View {
                     
                 }
             }.onChange(of: locationManager.applocation){
-                viewModel.onEvent(.onLocationChange($1))
+                if let _ = locationManager.lastKnownLocation {
+                    viewModel.onEvent(.onLocationChange($1))
+                    locationManager.stopUpdating()
+                }
+                
             }
             .onChange(of: locationManager.status){
                 if $1 == .authorized{

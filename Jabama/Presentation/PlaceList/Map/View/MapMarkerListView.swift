@@ -26,6 +26,9 @@ struct MapMarkerListView: View {
                 }.tag(place.id)
             }
         }
+        .onMapCameraChange {
+            mainViewModel.onEvent(.onLocationChange(.init(latitude: $0.region.center.latitude, longitude: $0.region.center.longitude)))
+        }
     }
 }
 

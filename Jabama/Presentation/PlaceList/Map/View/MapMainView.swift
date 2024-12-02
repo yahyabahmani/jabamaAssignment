@@ -37,7 +37,7 @@ struct MapMainView: View {
                 cameraPosition = .region(
                     MKCoordinateRegion(
                         center: userLocation,
-                        span: MKCoordinateSpan(latitudeDelta: 0.09, longitudeDelta: 0.09)
+                        span: MKCoordinateSpan(latitudeDelta: 0.04, longitudeDelta: 0.04)
                     )
                 )
             }

@@ -31,6 +31,9 @@ class PlaceListMainViewModel:BaseViewModel<PlaceListEvent> {
     private let searchTextPublisher = PassthroughSubject<String, Never>()
     
     @ObservationIgnored
+    private let locationPublisher = PassthroughSubject<AppLocation, Never>()
+    
+    @ObservationIgnored
     var searchText:String = ""
     
     @ObservationIgnored
@@ -38,11 +41,11 @@ class PlaceListMainViewModel:BaseViewModel<PlaceListEvent> {
     
     override init() {
         super.init()
-        listenToQueryChanges()
+        listenToChanges()
     }
     
     deinit{
-        
+        cancellables.removeAll()
     }
     
     override func onEvent(_ event: PlaceListEvent) {
@@ -68,7 +71,7 @@ class PlaceListMainViewModel:BaseViewModel<PlaceListEvent> {
 extension PlaceListMainViewModel{
     
     private func onLocationChange(_ location:AppLocation){
-        self.appLocation = location
+        self.locationPublisher.send(location)
     }
     
     private func onSearchTextChanged(_ queryText:String){
@@ -112,11 +115,19 @@ extension PlaceListMainViewModel{
         }
     }
     
-    private func listenToQueryChanges(){
+    private func listenToChanges(){
         searchTextPublisher
             .debounce(for: .seconds(0.2), scheduler: RunLoop.main)
-            .sink { event in
-                self.searchText = event
+            .sink { value in
+                self.searchText = value
+                self.fetchPlaces(isSilent: true)
+            }
+            .store(in: &cancellables)
+        
+        locationPublisher
+            .debounce(for: .seconds(0.4), scheduler: RunLoop.main)
+            .sink { value in
+                self.appLocation = value
                 self.fetchPlaces(isSilent: true)
             }
             .store(in: &cancellables)
