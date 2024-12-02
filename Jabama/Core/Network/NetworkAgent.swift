@@ -43,7 +43,6 @@ struct NetworkAgent {
                 }
                 return data
             }
-            .handleEvents(receiveOutput: { print(NSString(data: $0.subdata(in: 0..<min(5 * 1024, $0.count)), encoding: String.Encoding.utf8.rawValue)!) })
             .decode(type:T.self, decoder: JSONDecoder())
             .mapError {
                 if let error = $0 as? ErrorModel {

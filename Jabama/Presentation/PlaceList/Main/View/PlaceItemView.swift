@@ -11,14 +11,13 @@ import SDWebImageSwiftUI
 struct PlaceItemView: View {
     var searchPlace:SearchPlace
     var body: some View {
-        VStack {
+        VStack(alignment:.leading) {
             HStack{
                 WebImage(url: URL(string: ExtractPhotoUtil.getImageUrl(from: searchPlace.firstPhoto(),width: 100,height:100))) { image in
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(height:100)
-                        .frame(width:100)
+                        
                     
                 } placeholder: {
                     ImagePlaceHolderView()
@@ -28,19 +27,24 @@ struct PlaceItemView: View {
                 .clipShape(Circle())
                 
                 VStack(alignment:.leading,spacing:8){
-                    Text(searchPlace.name?.getEnglishAlphabet() ?? "")
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.black)
-                        .lineLimit(1)
-                        .multilineTextAlignment(.leading)
-                        .padding(.trailing,52)
+                    if let name = searchPlace.name?.getEnglishAlphabet(), !name.isEmpty {
+                        Text(name)
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.black)
+                            .lineLimit(1)
+                            .padding(.trailing,52)
+                    }
                     
-                    Text(searchPlace.name?.getPersianAlphabet() ?? "")
+                    
+                if let persianName = searchPlace.name?.getPersianAlphabet(), !persianName.isEmpty {
+                    Text(persianName)
                         .font(.kBody)
                         .foregroundColor(.mediumGray)
                         .lineLimit(2)
                         .multilineTextAlignment(.leading)
+                    }
+                   
                     
                     HStack{
                         Text(searchPlace.firstCategory()?.shortName ?? "")
@@ -69,7 +73,7 @@ struct PlaceItemView: View {
                 
                 Spacer()
                 
-            }.frame(width: getRect().size.width-32)
+            }
             
             Text(searchPlace.lastTip())
                 .font(.kBody)
@@ -78,6 +82,7 @@ struct PlaceItemView: View {
                 .multilineTextAlignment(.leading)
             
         }
+        .frame(width: getRect().size.width-32,height:165)
         .overlay(alignment:.topTrailing){
             RatingView(rating: searchPlace.rating ?? 0.0)
         }

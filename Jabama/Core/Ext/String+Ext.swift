@@ -28,13 +28,33 @@ extension String {
     }
     
     func getEnglishAlphabet() -> String{
-        let englishAlphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-        return String(self.filter { englishAlphabet.contains($0) })
+        let pattern = "[A-Za-z]|\\s" // Match English letters and spaces
+           let regex = try? NSRegularExpression(pattern: pattern, options: [])
+           let matches = regex?.matches(in: self, options: [], range: NSRange(location: 0, length: self.utf16.count)) ?? []
+           
+           let result = matches.compactMap { match -> String? in
+               if let range = Range(match.range, in: self) {
+                   return String(self[range])
+               }
+               return nil
+           }
+           
+           return result.joined().trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
     func getPersianAlphabet() -> String{
-        let persianAlphabet = "ابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهیی "
-        return String(self.filter { persianAlphabet.contains($0) })
+        let pattern = "[\u{0600}-\u{06FF}\u{FB50}-\u{FDFF}\u{FE70}-\u{FEFF}]|\\s"
+           let regex = try? NSRegularExpression(pattern: pattern, options: [])
+        let matches = regex?.matches(in: self, options: [], range: NSRange(location: 0, length: self.utf16.count)) ?? []
+           
+           let result = matches.compactMap { match -> String? in
+               if let range = Range(match.range, in: self) {
+                   return String(self[range])
+               }
+               return nil
+           }
+           
+           return result.joined().trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
     
