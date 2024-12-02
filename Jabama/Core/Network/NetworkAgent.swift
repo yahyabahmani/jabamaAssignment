@@ -32,8 +32,8 @@ struct NetworkAgent {
                             NSNotification.makeUnauthorized(isUnauthorized: true)
                             throw ErrorModel(code: 401,message: "Sorry, you are not authorized to access this resource.")
                         }
-                        let errorRes = try? JSONDecoder().decode(ApiResponse<T>.self, from: data)
-                        throw ErrorModel(code: errorRes?.error?.code,message: errorRes?.error?.message ?? "Sorry, Something went wrong." )
+                        let errorRes = try? JSONDecoder().decode(ErrorModel.self, from: data)
+                        throw errorRes ?? ErrorModel(code: 0,message: "Unknown Error")
                     }
                     if !networkReachability.reachable{
                         throw ErrorModel(code: 1000,message: "Please check your internet connection.")
@@ -46,7 +46,6 @@ struct NetworkAgent {
             .handleEvents(receiveOutput: { print(NSString(data: $0.subdata(in: 0..<min(5 * 1024, $0.count)), encoding: String.Encoding.utf8.rawValue)!) })
             .decode(type:T.self, decoder: JSONDecoder())
             .mapError {
-                print($0)
                 if let error = $0 as? ErrorModel {
                     return error
                 } else {
