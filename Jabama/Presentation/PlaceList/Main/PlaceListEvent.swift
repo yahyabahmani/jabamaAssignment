@@ -7,4 +7,5 @@
 
 enum PlaceListEvent {
     case changeViewType
+    case loadMore
 }

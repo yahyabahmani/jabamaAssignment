@@ -11,6 +11,6 @@ struct SearchPlaceQuery:DictionaryEncodable{
     var radius: Int = 22000
     var categories: String? = nil
     var limit: Int = 10
-    var fields: String? = "photos,fsq_id,name,geocodes,categories,distance,rating,location,tips,price,stats,description,website,rating,tips"
+    var fields: String? = "fsq_id,name,categories,distance,rating,location,tips,price,stats,description,photos"
     
 }

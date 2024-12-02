@@ -17,7 +17,7 @@ struct PlaceListMainView: View {
             ZStack(alignment:.top){
                 SearchPlaceToolbar()
                     .environment(viewModel)
-                PlaceListView()
+                PlaceListStateView()
                     .padding(.top,60)
                     .environment(viewModel)
             }

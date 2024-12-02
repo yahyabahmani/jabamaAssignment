@@ -28,20 +28,13 @@ struct PlaceItemView: View {
                 .clipShape(Circle())
                 
                 VStack(alignment:.leading,spacing:8){
-                    HStack {
-                        Text(searchPlace.name?.getEnglishAlphabet() ?? "")
-                            .font(.headline)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.black)
-                            .fixedSize(horizontal: false, vertical: true)
-                            .lineLimit(2)
-                            .multilineTextAlignment(.leading)
-                        
-                        Spacer()
-                        
-                        RatingView(rating: searchPlace.rating ?? 0.0)
-                       
-                    }
+                    Text(searchPlace.name?.getEnglishAlphabet() ?? "")
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.black)
+                        .lineLimit(2)
+                        .multilineTextAlignment(.leading)
+                        .padding(.trailing,52)
                     
                     Text(searchPlace.name?.getPersianAlphabet() ?? "")
                         .font(.kBody)
@@ -84,6 +77,9 @@ struct PlaceItemView: View {
                 .lineLimit(2)
                 .multilineTextAlignment(.leading)
             
+        }
+        .overlay(alignment:.topTrailing){
+            RatingView(rating: searchPlace.rating ?? 0.0)
         }
         .padding(8)
         .background(.white)

@@ -16,6 +16,14 @@ struct PlaceListView: View {
                     PlaceItemView(searchPlace: place)
                         .tag(place.id)
                 }
+                if mainViewModel.canLoadMore{
+                    ProgressView()
+                        .controlSize(.large)
+                        .tint(.black)
+                        .task {
+                            mainViewModel.onEvent(.loadMore)
+                        }
+                }
             }.padding(.top)
         }
         

@@ -11,5 +11,4 @@ enum ViewState:Equatable {
     case error
     case empty
     case idle
-    case disabled
 }
