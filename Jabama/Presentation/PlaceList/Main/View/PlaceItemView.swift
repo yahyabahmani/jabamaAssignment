@@ -27,7 +27,7 @@ struct PlaceItemView: View {
                 .clipShape(Circle())
                 
                 VStack(alignment:.leading,spacing:8){
-                    if let name = searchPlace.name?.getEnglishAlphabet(), !name.isEmpty {
+                    if let name = searchPlace.name?.getAlphabet(), !name.isEmpty {
                         Text(name)
                             .font(.headline)
                             .fontWeight(.semibold)
