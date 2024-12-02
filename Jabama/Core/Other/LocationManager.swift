@@ -9,6 +9,7 @@ import Foundation
 import Combine
 import CoreLocation
 
+@Observable
 class LocationManager: NSObject, CLLocationManagerDelegate {
     @ObservationIgnored
     var objectWillChange = PassthroughSubject<Void, Never>()
@@ -22,7 +23,10 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     private var stopped: Bool = false
     @ObservationIgnored
     private let locationManager: CLLocationManager
-    @Published var lastKnownLocation: CLLocationCoordinate2D?
+    var lastKnownLocation: CLLocationCoordinate2D?
+    var applocation:AppLocation = .init()
+    var status:LocationStatus = .unknown
+    
 
     
     override init() {
@@ -57,12 +61,14 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {//Trigged every time authorization status changes
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
             checkLocationAuthorization()
         }
         
         func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
             lastKnownLocation = locations.first?.coordinate
+            applocation.latitude = lastKnownLocation?.latitude
+            applocation.longitude = lastKnownLocation?.longitude
         }
     
     func checkLocationAuthorization() {
@@ -72,29 +78,29 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
             
             switch locationManager.authorizationStatus {
             case .notDetermined:
+                status = .notDetermined
                 locationManager.requestWhenInUseAuthorization()
                 
             case .restricted:
-                print("Location restricted")
+                status = .restricted
                 
             case .denied:
-                print("Location denied")
+                status = .denied
                 
             case .authorizedAlways:
-                print("Location authorizedAlways")
+                status = .authorized
                 
             case .authorizedWhenInUse:
+                status = .authorized
                 lastKnownLocation = locationManager.location?.coordinate
+                applocation.latitude = lastKnownLocation?.latitude
+                applocation.longitude = lastKnownLocation?.longitude
                 
             @unknown default:
-                print("Location service disabled")
+                status = .unknown
             
             }
         }
-    
-    func getStatus() -> CLAuthorizationStatus {
-        return locationManager.authorizationStatus
-    }
     
     func locationToDegree(
        _ tagetLatitude:Double,

@@ -23,8 +23,16 @@ struct PlaceListMainView: View {
                         .padding(.top,60)
                         .environment(viewModel)
                 }
+            }.onChange(of: locationManager.applocation){
+                viewModel.onEvent(.onLocationChange($1))
+            }
+            .onChange(of: locationManager.status){
+                if $1 == .authorized{
+                    viewModel.onEvent(.fetchPlaces)
+                }
             }
         }
+        
     }
 }
 

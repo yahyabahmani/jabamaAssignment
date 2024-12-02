@@ -33,7 +33,7 @@ extension String {
     }
     
     func getPersianAlphabet() -> String{
-        let persianAlphabet = "ابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی "
+        let persianAlphabet = "ابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهیی "
         return String(self.filter { persianAlphabet.contains($0) })
     }
     

@@ -9,4 +9,6 @@ enum PlaceListEvent {
     case changeViewType
     case loadMore
     case onSearchTextChanged(String)
+    case onLocationChange(AppLocation)
+    case fetchPlaces
 }
