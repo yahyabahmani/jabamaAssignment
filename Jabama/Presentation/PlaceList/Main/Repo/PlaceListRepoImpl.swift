@@ -1,5 +1,5 @@
 //
-//  ProductListRepoImpl.swift
+//  PlaceListRepoImpl.swift
 //  Jabama
 //
 //  Created by Mohsen on 12/2/24.
@@ -7,7 +7,7 @@
 
 import Combine
 
-struct ProductListRepoImpl:ProductListRepo{
+struct PlaceListRepoImpl:PlaceListRepo{
     @Inject private var agent: NetworkAgent
     
     func searchPlaces(query: SearchPlaceQuery) -> AnyPublisher<SearchPlaceRes, ErrorModel> {

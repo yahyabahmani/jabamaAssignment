@@ -1,5 +1,5 @@
 //
-//  ProductListMainViewModel.swift
+//  PlaceListMainViewModel.swift
 //  Jabama
 //
 //  Created by Mohsen on 12/1/24.
@@ -8,12 +8,15 @@
 import Foundation
 
 @Observable
-class ProductListMainViewModel:BaseViewModel<ProductListEvent> {
+class PlaceListMainViewModel:BaseViewModel<PlaceListEvent> {
     @ObservationIgnored
-    @Inject private var apiService:ProductListApiService
+    @Inject private var apiService:PlaceListApiService
+    
+    private(set) var viewState:ViewState = .idle
+    private(set) var places: [SearchPlace] = []
     
     var searchText:String = ""
-    private(set) var viewType: ProductListViewType = .list
+    private(set) var viewType: PlaceListViewType = .list
     
     @ObservationIgnored
     private var currentLimit:Int = 10
@@ -22,11 +25,11 @@ class ProductListMainViewModel:BaseViewModel<ProductListEvent> {
     override init() {
         super.init()
         Task{
-            await searchProducts()
+            await searchPlaces()
         }
     }
     
-    override func onEvent(_ event: ProductListEvent) {
+    override func onEvent(_ event: PlaceListEvent) {
         switch event {
         case .changeViewType:
             changeViewType()
@@ -34,18 +37,19 @@ class ProductListMainViewModel:BaseViewModel<ProductListEvent> {
     }
 }
 
-extension ProductListMainViewModel{
+extension PlaceListMainViewModel{
     
     private func changeViewType(){
         self.viewType = viewType == .list ? .map : .list
     }
     
-    private func searchProducts() async{
+    private func searchPlaces() async{
+        viewState = .loading
         let query = SearchPlaceQuery(query:searchText,limit: currentLimit)
         do{
-            let result = try await apiService.searchPlaces(query: query).async()
-            if let products = result.results{
-                
+            let res = try await apiService.searchPlaces(query: query).async()
+            if let places = res.results{
+                self.places = places
             }
         }catch{
             print(error)

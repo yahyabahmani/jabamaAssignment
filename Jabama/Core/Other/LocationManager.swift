@@ -9,14 +9,18 @@ import Foundation
 import Combine
 import CoreLocation
 
-class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
+class LocationManager: NSObject, CLLocationManagerDelegate {
+    @ObservationIgnored
     var objectWillChange = PassthroughSubject<Void, Never>()
+    @ObservationIgnored
     var degrees: Double = 0 {
         didSet {
             objectWillChange.send()
         }
     }
+    @ObservationIgnored
     private var stopped: Bool = false
+    @ObservationIgnored
     private let locationManager: CLLocationManager
     @Published var lastKnownLocation: CLLocationCoordinate2D?
 

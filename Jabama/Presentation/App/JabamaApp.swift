@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 @main
 struct JabamaApp: App {
@@ -21,7 +22,11 @@ struct JabamaApp: App {
     
     private func registerDependencies(){
         DependencyResolver.register(type: NetworkAgent.self,as: .singleton, NetworkAgent())
-        DependencyResolver.register(type: ProductListApiService.self, ProductListApiService())
-        DependencyResolver.register(type: ProductListRepo.self, ProductListRepoImpl())
+        DependencyResolver.register(type: PlaceListApiService.self, PlaceListApiService())
+        DependencyResolver.register(type: PlaceListRepo.self, PlaceListRepoImpl())
+    }
+    
+    private func preConfigure(){
+        SDWebImageDownloader.shared.setValue(AppConstants.API_KEY, forHTTPHeaderField: "Authorization")
     }
 }

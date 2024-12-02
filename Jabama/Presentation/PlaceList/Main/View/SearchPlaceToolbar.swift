@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SearchPlaceToolbar: View {
-    @Environment(ProductListMainViewModel.self) var viewModel
+    @Environment(PlaceListMainViewModel.self) var viewModel
     var body: some View {
         @Bindable var vm = viewModel
         ZStack{
@@ -40,12 +40,14 @@ struct SearchPlaceToolbar: View {
             }
             .padding(.horizontal,24)
             .padding(.vertical)
-        }.background(.kAccent)
+        }
+        .frame(height:60)
+        .background(.kAccent)
     }
 }
 
 #Preview {
-    @Previewable @State var viewModel: ProductListMainViewModel = .init()
+    @Previewable @State var viewModel: PlaceListMainViewModel = .init()
     VStack {
         SearchPlaceToolbar()
             .environment(viewModel)

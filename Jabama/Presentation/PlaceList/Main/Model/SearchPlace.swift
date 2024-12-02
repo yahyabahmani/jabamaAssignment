@@ -13,20 +13,20 @@ struct SearchPlace:Codable,Identifiable{
     let closedBucket: String?
     let dateClosed: String?
     let description: String?
-    let distance: Int?
+    let distance: Double?
     let email: String?
     let fax: String?
     let geocodes: Geocodes?
     let hours: Hours?
     let hoursPopular: [PopularHour]?
     let link: String?
-    let location: ProductLocation?
+    let location: PlaceLocation?
     let menu: String?
     let name: String?
     let photos: [Photo]?
-    let popularity: Int?
-    let price: Int?
-    let rating: Int?
+    let popularity: Double?
+    let price: Double?
+    let rating: Double?
     let stats: Stats?
     let tastes: [String]?
     let tel: String?
@@ -65,5 +65,27 @@ struct SearchPlace:Codable,Identifiable{
         case verified
         case website
         case closedBucket = "closed_bucket"
+    }
+}
+
+extension SearchPlace{
+    func firstCategory()->Category?{
+        return categories?.first
+    }
+    
+    func firstPhoto()->Photo?{
+        return photos?.first
+    }
+    
+    func score()->Double{
+        return ((rating ?? 0)/2)
+    }
+    
+    func distanceInKm()->String{
+        return "\((distance ?? 0)/1000) km"
+    }
+    
+    func lastTip()->String{
+        return tips?.last?.text ?? ""
     }
 }

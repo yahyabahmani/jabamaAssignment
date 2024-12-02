@@ -1,5 +1,5 @@
 //
-//  ProductLocation.swift
+//  PlaceLocation.swift
 //  Jabama
 //
 //  Created by Mohsen on 12/1/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ProductLocation: Codable {
+struct PlaceLocation: Codable {
     let address: String?
     let addressExtended: String?
     let adminRegion: String?

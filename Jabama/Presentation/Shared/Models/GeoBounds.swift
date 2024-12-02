@@ -8,5 +8,5 @@
 import Foundation
 
 struct GeoBounds: Codable {
-    let circle: Circle?
+    let circle: GeoCircle?
 }

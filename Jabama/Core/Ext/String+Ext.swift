@@ -27,5 +27,16 @@ extension String {
            return emailTest.evaluate(with: self)
     }
     
+    func getEnglishAlphabet() -> String{
+        let englishAlphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+        return String(self.filter { englishAlphabet.contains($0) })
+    }
+    
+    func getPersianAlphabet() -> String{
+        let persianAlphabet = "ابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی "
+        return String(self.filter { persianAlphabet.contains($0) })
+    }
+    
+    
     
 }
