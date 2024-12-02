@@ -7,18 +7,14 @@
 
 import Foundation
 
-struct SearchPlace:Codable,Identifiable{
+struct SearchPlace:Codable,Identifiable,Equatable{
     let id:String?
     let categories: [Category]?
-    let closedBucket: String?
-    let dateClosed: String?
     let description: String?
     let distance: Double?
     let email: String?
     let fax: String?
     let geocodes: Geocodes?
-    let hours: Hours?
-    let hoursPopular: [PopularHour]?
     let link: String?
     let location: PlaceLocation?
     let menu: String?
@@ -27,7 +23,6 @@ struct SearchPlace:Codable,Identifiable{
     let popularity: Double?
     let price: Double?
     let rating: Double?
-    let stats: Stats?
     let tastes: [String]?
     let tel: String?
     let timezone: String?
@@ -40,14 +35,11 @@ struct SearchPlace:Codable,Identifiable{
     enum CodingKeys:  String, CodingKey {
         case id = "fsq_id"
         case categories
-        case dateClosed = "date_closed"
         case description
         case distance
         case email
         case fax
         case geocodes
-        case hours
-        case hoursPopular = "hours_popular"
         case link
         case location
         case menu
@@ -56,7 +48,6 @@ struct SearchPlace:Codable,Identifiable{
         case popularity
         case price
         case rating
-        case stats
         case tastes
         case tel
         case timezone
@@ -64,7 +55,6 @@ struct SearchPlace:Codable,Identifiable{
         case venueRealityBucket = "venue_reality_bucket"
         case verified
         case website
-        case closedBucket = "closed_bucket"
     }
 }
 

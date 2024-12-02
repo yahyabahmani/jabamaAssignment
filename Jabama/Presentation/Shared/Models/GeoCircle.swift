@@ -8,6 +8,6 @@
 import Foundation
 
 struct GeoCircle: Codable {
-    let center: Coordinate?
+    let center: PlaceCoordinate?
     let radius: Double?
 }

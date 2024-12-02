@@ -9,8 +9,8 @@ import SwiftUI
 
 struct SearchPlaceToolbar: View {
     @Environment(PlaceListMainViewModel.self) var viewModel
+    @State var searchText: String = ""
     var body: some View {
-        @Bindable var vm = viewModel
         ZStack{
             HStack(spacing:16){
                 HStack{
@@ -19,7 +19,14 @@ struct SearchPlaceToolbar: View {
                         .font(.title2)
                         .fontWeight(.semibold)
                     
-                    TextField("Search", text: $vm.searchText)
+                    TextField("Search", text: $searchText.onChange({value in
+                        viewModel.onEvent(.onSearchTextChanged(value))
+                    }))
+                    .font(.body)
+                    .textFieldStyle(.plain)
+                    .padding(.vertical,4)
+                    .foregroundStyle(.black)
+                    
                         
                 }
                 .padding(4)

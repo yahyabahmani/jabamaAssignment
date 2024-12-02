@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Tip: Codable, Identifiable {
+struct Tip: Codable, Identifiable,Equatable {
     let id: String?
     let createdAt: String?
     let text: String?

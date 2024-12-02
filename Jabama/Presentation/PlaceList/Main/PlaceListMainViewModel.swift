@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 @Observable
 class PlaceListMainViewModel:BaseViewModel<PlaceListEvent> {
@@ -16,7 +17,7 @@ class PlaceListMainViewModel:BaseViewModel<PlaceListEvent> {
     private(set) var places: [SearchPlace] = []
     private(set) var error:ErrorModel?
     
-    var searchText:String = ""
+    
     private(set) var viewType: PlaceListViewType = .list
     
     @ObservationIgnored
@@ -24,12 +25,27 @@ class PlaceListMainViewModel:BaseViewModel<PlaceListEvent> {
     
     private(set) var canLoadMore:Bool = true
     
+    @ObservationIgnored
+    private let searchTextPublisher = PassthroughSubject<String, Never>()
+    
+    @ObservationIgnored
+    var searchText:String = ""
+    
+    @ObservationIgnored
+    var cancellables = Set<AnyCancellable>()
     
     override init() {
         super.init()
+        
         Task{
             await fetchPlaces()
         }
+        
+        listenToQueryChanges()
+    }
+    
+    deinit{
+        
     }
     
     override func onEvent(_ event: PlaceListEvent) {
@@ -40,12 +56,23 @@ class PlaceListMainViewModel:BaseViewModel<PlaceListEvent> {
             Task{
                 await fetchPlaces(currentLimit + 10,isSilent: true)
             }
+        case .onSearchTextChanged(let query):
+            onSearchTextChanged(query)
             
         }
     }
 }
 
 extension PlaceListMainViewModel{
+    
+    private func onSearchTextChanged(_ query:String){
+        self.canLoadMore = true
+        if !query.isEmpty{
+            self.searchTextPublisher.send(query)
+        }else if !searchText.isEmpty{
+            self.searchTextPublisher.send("")
+        }
+    }
     
     private func changeViewType(){
         self.viewType = viewType == .list ? .map : .list
@@ -68,14 +95,26 @@ extension PlaceListMainViewModel{
                 }
             }else{
                 self.canLoadMore = false
-                if self.places.isEmpty{
-                    self.viewState = .empty
-                }
+                self.viewState = .empty
+                self.places.removeAll()
             }
         }catch{
             self.error = error.toModel()
             self.viewState = .error
         }
-       
+        
+    }
+    
+    private func listenToQueryChanges(){
+        searchTextPublisher
+            .debounce(for: .seconds(0.2), scheduler: RunLoop.main)
+            .sink { event in
+                self.searchText = event
+                Task{
+                    await self.fetchPlaces(isSilent: true)
+                }
+                print("\(event)")
+            }
+            .store(in: &cancellables)
     }
 }

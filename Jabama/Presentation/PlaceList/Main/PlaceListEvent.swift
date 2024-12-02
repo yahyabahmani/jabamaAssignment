@@ -8,4 +8,5 @@
 enum PlaceListEvent {
     case changeViewType
     case loadMore
+    case onSearchTextChanged(String)
 }

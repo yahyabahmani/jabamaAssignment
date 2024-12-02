@@ -24,7 +24,9 @@ struct PlaceListView: View {
                             mainViewModel.onEvent(.loadMore)
                         }
                 }
-            }.padding(.top)
+            }
+            .animation(.default, value: mainViewModel.places)
+            .padding(.top)
         }
         
     }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PlaceLocation: Codable {
+struct PlaceLocation: Codable,Equatable {
     let address: String?
     let addressExtended: String?
     let adminRegion: String?

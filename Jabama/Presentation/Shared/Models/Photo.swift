@@ -5,7 +5,7 @@
 //  Created by Mohsen on 12/1/24.
 //
 
-struct Photo: Codable, Identifiable {
+struct Photo: Codable, Identifiable,Equatable {
     let id : String?
     let createdAt: String?
     let prefix: String?

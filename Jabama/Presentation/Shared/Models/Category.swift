@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Category: Codable, Identifiable {
+struct Category: Codable, Identifiable,Equatable {
     let id: Int?
     let name: String?
     let shortName: String?

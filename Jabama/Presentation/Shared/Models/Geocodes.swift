@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct Geocodes: Codable {
-    let dropOff: Coordinate?
-    let frontDoor: Coordinate?
-    let main: Coordinate?
-    let road: Coordinate?
-    let roof: Coordinate?
+struct Geocodes: Codable,Equatable {
+    let dropOff: PlaceCoordinate?
+    let frontDoor: PlaceCoordinate?
+    let main: PlaceCoordinate?
+    let road: PlaceCoordinate?
+    let roof: PlaceCoordinate?
 
     enum CodingKeys: String, CodingKey {
         case dropOff = "drop_off"

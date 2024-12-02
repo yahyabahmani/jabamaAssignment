@@ -11,15 +11,18 @@ struct PlaceListMainView: View {
     @State private var viewModel: PlaceListMainViewModel = .init()
     @State private var locationManager: LocationManager = .init()
     var body: some View {
-        GeometryReader { geometry in
-            let _ = geometry.size
-            
-            ZStack(alignment:.top){
-                SearchPlaceToolbar()
-                    .environment(viewModel)
-                PlaceListStateView()
-                    .padding(.top,60)
-                    .environment(viewModel)
+        ZStack {
+            Color.white.ignoresSafeArea()
+            GeometryReader { geometry in
+                let _ = geometry.size
+                
+                ZStack(alignment:.top){
+                    SearchPlaceToolbar()
+                        .environment(viewModel)
+                    PlaceListStateView()
+                        .padding(.top,60)
+                        .environment(viewModel)
+                }
             }
         }
     }
