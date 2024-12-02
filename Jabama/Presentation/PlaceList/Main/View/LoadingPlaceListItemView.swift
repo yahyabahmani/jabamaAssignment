@@ -8,28 +8,29 @@
 import SwiftUI
 
 struct LoadingPlaceListItemView: View {
+    private let itemsColor = Color.gray.opacity(0.6)
     var body: some View {
         VStack {
             HStack{
                 Circle()
-                    .fill(.gray)
+                    .fill(itemsColor)
                     .frame(height:100)
                     .frame(width:100)
                     .clipShape(Circle())
                 
                 VStack(alignment:.leading,spacing:8){
                     RoundedRectangle(cornerRadius: 4)
-                        .fill(.gray)
+                        .fill(itemsColor)
                         .frame(height:8)
                         .padding(.trailing,52)
                     
                     RoundedRectangle(cornerRadius: 4)
-                        .fill(.gray)
+                        .fill(itemsColor)
                         .frame(height:8)
                         .padding(.trailing,16)
                     
                     RoundedRectangle(cornerRadius: 4)
-                        .fill(.gray)
+                        .fill(itemsColor)
                         .frame(height:8)
                         .padding(.trailing,16)
                     
@@ -39,7 +40,7 @@ struct LoadingPlaceListItemView: View {
                 
             }.frame(width: getRect().size.width-32)
             RoundedRectangle(cornerRadius: 4)
-                .fill(.gray)
+                .fill(itemsColor)
                 .frame(height:8)
                 .padding(.horizontal,16)
             
