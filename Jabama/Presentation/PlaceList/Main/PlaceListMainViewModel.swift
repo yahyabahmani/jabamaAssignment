@@ -60,7 +60,9 @@ class PlaceListMainViewModel:BaseViewModel<PlaceListEvent> {
             changeViewType()
         case .loadMore:
             if canLoadMore{
-                fetchPlaces(currentLimit + 10,isSilent: true)
+                Task{
+                    await fetchPlaces(currentLimit + 10,isSilent: true)
+                }
             }
         case .onSearchTextChanged(let query):
             onSearchTextChanged(query)
@@ -68,7 +70,9 @@ class PlaceListMainViewModel:BaseViewModel<PlaceListEvent> {
         case .onLocationChange(let location):
             self.onLocationChange(location)
         case .fetchPlaces:
-            self.fetchPlaces()
+            Task{
+                await self.fetchPlaces()
+            }
         case .changeGpsStatus(let isAvailable):
             self.isLocationAvailable = isAvailable
         case .changeNetworkStatus(let isAvailable):
@@ -96,6 +100,7 @@ extension PlaceListMainViewModel{
         self.viewType = viewType == .list ? .map : .list
     }
     
+    @MainActor
     private func fetchPlaces(_ limit:Int = 10,isSilent:Bool = false){
         currentLimit = limit
         viewState = .loading
@@ -138,7 +143,9 @@ extension PlaceListMainViewModel{
             .debounce(for: .seconds(0.2), scheduler: RunLoop.main)
             .sink { value in
                 self.searchText = value
-                self.fetchPlaces(isSilent: true)
+                Task{
+                    await self.fetchPlaces(isSilent: true)
+                }
             }
             .store(in: &cancellables)
         
@@ -146,7 +153,9 @@ extension PlaceListMainViewModel{
             .debounce(for: .seconds(0.4), scheduler: RunLoop.main)
             .sink { value in
                 self.appLocation = value
-                self.fetchPlaces(isSilent: true)
+                Task{
+                    await self.fetchPlaces(isSilent: true)
+                }
             }
             .store(in: &cancellables)
     }
