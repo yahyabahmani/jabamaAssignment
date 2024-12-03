@@ -14,6 +14,7 @@ class PlaceListMainViewModel:BaseViewModel<PlaceListEvent> {
     @Inject private var apiService:PlaceListApiService
     
     private(set) var viewState:ViewState = .loading
+    private(set) var typeSwitcherState:ViewState = .loading
     private(set) var places: [SearchPlace] = []
     private(set) var error:ErrorModel?
     @ObservationIgnored
@@ -95,6 +96,7 @@ extension PlaceListMainViewModel{
     
     private func fetchPlaces(_ limit:Int = 10,isSilent:Bool = false){
         currentLimit = limit
+        typeSwitcherState = .loading
         if !isSilent{
             viewState = .loading
         }
@@ -103,6 +105,7 @@ extension PlaceListMainViewModel{
         Task{
             do{
                 let res = try await apiService.searchPlaces(query: query).async()
+                typeSwitcherState = .idle
                 if let places = res.results, !places.isEmpty{
                     self.places = places
                     self.viewState = .idle
@@ -115,6 +118,7 @@ extension PlaceListMainViewModel{
                     self.places.removeAll()
                 }
             }catch{
+                typeSwitcherState = .idle
                 let error = error.toModel()
                 if error.code == 1000{
                     isNetworkAvailable = false

@@ -37,7 +37,7 @@ struct SearchPlaceToolbar: View {
                 Button{
                     viewModel.onEvent(.changeViewType)
                 }label: {
-                    if viewModel.viewState == .loading{
+                    if viewModel.typeSwitcherState == .loading{
                         ProgressView()
                             .tint(.white)
                             .frame(width: 30, height: 30)
@@ -51,7 +51,7 @@ struct SearchPlaceToolbar: View {
                     }
                         
                 }
-                .disabled(viewModel.viewState == .loading)
+                .disabled(viewModel.typeSwitcherState == .loading)
             }
             .padding(.horizontal,24)
             .padding(.vertical)
