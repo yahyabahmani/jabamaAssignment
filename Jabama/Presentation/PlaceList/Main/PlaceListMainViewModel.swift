@@ -106,8 +106,8 @@ extension PlaceListMainViewModel{
             do{
                 let res = try await apiService.searchPlaces(query: query).async()
                 typeSwitcherState = .idle
-                if let places = res.results, !places.isEmpty{
-                    self.places = places
+                if let placesList = res.results, !placesList.isEmpty{
+                    self.places = placesList
                     self.viewState = .idle
                     if currentLimit >= 50{
                         canLoadMore = false

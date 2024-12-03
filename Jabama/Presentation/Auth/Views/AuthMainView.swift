@@ -1,5 +1,5 @@
 //
-//  ProfileSampleView.swift
+//  AuthMainView.swift
 //  Jabama
 //
 //  Created by Mohsen on 12/3/24.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct ProfileSampleView: View {
+struct AuthMainView: View {
     var body: some View {
-        Text("Profile Main View")
+        Text("Auth Main View")
     }
 }
 
 #Preview {
-    ProfileSampleView()
+    AuthMainView()
 }
