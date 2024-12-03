@@ -8,29 +8,26 @@
 import SwiftUI
 
 struct CustomMarkerView: View {
-    var score:Double
+    var place: SearchPlace
+    @Environment(MapViewModel.self) var mapViewModel
     var body: some View {
         MarkerShape()
             .fill(LinearGradient(
-                gradient: Gradient(colors: [.kAccent, .purple]),
+                gradient: Gradient(colors: mapViewModel.selectedPlace == place ? [.white] : [.kAccent, .purple]),
                 startPoint: .top,
                 endPoint: .bottom)
             )
             .frame(width: 50, height: 60)
             .shadow(radius: 5)
             .overlay(alignment:.top){
-                Text("\(score.removeZerosFromEnd())".prefix(3))
+                Text("\(place.rating ?? 0)".prefix(3))
                     .font(.title3)
                     .fontWeight(.medium)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(mapViewModel.selectedPlace == place ? .black : .white)
                     .padding(.top,12)
                 
             }
     }
-}
-
-#Preview {
-    CustomMarkerView(score:7.6)
 }
 
 struct MarkerShape: Shape {

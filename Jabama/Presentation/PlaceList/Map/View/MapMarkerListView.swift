@@ -18,7 +18,8 @@ struct MapMarkerListView: View {
         Map(position:$cameraPosition){
             ForEach(mainViewModel.places,id: \.id){place in
                 Annotation("", coordinate: place.geoLocation()) {
-                    CustomMarkerView(score:place.score())
+                    CustomMarkerView(place:place)
+                        .environment(mapViewModel)
                         .onTapGesture {
                             mapViewModel.onEvent(.onPlaceSelcted(place))
                             extraAction(place)
