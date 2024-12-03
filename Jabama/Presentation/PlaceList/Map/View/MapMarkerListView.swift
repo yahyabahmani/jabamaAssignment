@@ -24,14 +24,34 @@ struct MapMarkerListView: View {
                             mapViewModel.onEvent(.onPlaceSelcted(place))
                             extraAction(place)
                         }
-                }.tag(place.id)
+                }
+                .tag(place.id)
             }
         }
-        .onMapCameraChange {
+        .onMapCameraChange(frequency: .continuous) {
+            if mapViewModel.isCameraInitialized {
+                mapViewModel.onEvent(.onCameraMove(true))
+            }
+        }
+        .onMapCameraChange(frequency: .onEnd) {
             if mapViewModel.isCameraInitialized {
                 mainViewModel.onEvent(.onLocationChange(.init(latitude: $0.region.center.latitude, longitude: $0.region.center.longitude)))
+                
             }
-           
+        }
+        .onChange(of:mapViewModel.currentCameraLocation){
+            if let lat = $1.latitude, let lon = $1.longitude {
+                cameraPosition = .region(
+                    MKCoordinateRegion(
+                        center: .init(latitude: lat, longitude: lon),
+                        span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+                    )
+                )
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    mapViewModel.onEvent(.initializeCamera)
+                }
+            }
         }
     }
 }

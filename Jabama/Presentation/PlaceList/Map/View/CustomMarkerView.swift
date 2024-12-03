@@ -13,7 +13,7 @@ struct CustomMarkerView: View {
     var body: some View {
         MarkerShape()
             .fill(LinearGradient(
-                gradient: Gradient(colors: mapViewModel.selectedPlace == place ? [.white] : [.kAccent, .purple]),
+                gradient: Gradient(colors: mapViewModel.selectedPlace == place ? [.white] : [.kAccent, .orange]),
                 startPoint: .top,
                 endPoint: .bottom)
             )
@@ -27,6 +27,7 @@ struct CustomMarkerView: View {
                     .padding(.top,12)
                 
             }
+            .zIndex(mapViewModel.selectedPlace == place ? 1 : 0)
     }
 }
 

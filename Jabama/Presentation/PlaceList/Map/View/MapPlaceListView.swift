@@ -20,6 +20,15 @@ struct MapPlaceListView: View {
                         .scrollTransition(.interactive, axis: .horizontal) { effect, phase in
                             effect.scaleEffect(phase.isIdentity ? 1.0 : 0.95)
                         }
+                        .onAppear {
+                            markerAction(place)
+                        }
+                        .onTapGesture {
+                            mapViewModel.onEvent(.onCameraMove(false))
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                markerAction(place)
+                            }
+                        }
                     
                 }
                 
@@ -38,6 +47,14 @@ struct MapPlaceListView: View {
         }
         .scrollTargetBehavior(.viewAligned)
         .frame(height: 200)
+    }
+    
+    private func markerAction(_ place:SearchPlace){
+        if !mapViewModel.isCameraMoving{
+            withAnimation{
+                mapViewModel.onEvent(.changeCameraPosition(place))
+            }
+        }
     }
 }
 
