@@ -40,6 +40,10 @@ struct MapMainView: View {
                         span: MKCoordinateSpan(latitudeDelta: 0.04, longitudeDelta: 0.04)
                     )
                 )
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    mapViewModel.onEvent(.initializeCamera)
+                }
+                
             }
         }
     }

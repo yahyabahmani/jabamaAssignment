@@ -7,4 +7,5 @@
 
 enum MapEvent {
     case onPlaceSelcted(SearchPlace)
+    case initializeCamera
 }
