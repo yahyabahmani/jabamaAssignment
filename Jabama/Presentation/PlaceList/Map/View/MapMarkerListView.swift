@@ -21,7 +21,7 @@ struct MapMarkerListView: View {
                     CustomMarkerView(place:place)
                         .environment(mapViewModel)
                         .onTapGesture {
-                            mapViewModel.onEvent(.onPlaceSelcted(place))
+                            mapViewModel.onEvent(.onMarkerSelcted(place))
                             extraAction(place)
                         }
                 }

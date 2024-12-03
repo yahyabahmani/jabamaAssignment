@@ -6,7 +6,7 @@
 //
 
 enum MapEvent {
-    case onPlaceSelcted(SearchPlace)
+    case onMarkerSelcted(SearchPlace)
     case initializeCamera
     case changeCameraPosition(SearchPlace)
     case onCameraMove(Bool)

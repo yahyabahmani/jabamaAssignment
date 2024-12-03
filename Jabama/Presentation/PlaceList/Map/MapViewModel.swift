@@ -29,8 +29,9 @@ class MapViewModel:BaseViewModel<MapEvent> {
     
     override func onEvent(_ event: MapEvent) {
         switch event {
-        case .onPlaceSelcted(let place):
+        case .onMarkerSelcted(let place):
             selectedPlace = place
+            
         case .initializeCamera:
             self.isCameraInitialized = true
         case .changeCameraPosition(let place):
@@ -52,6 +53,11 @@ extension MapViewModel {
     
     private func moveCamera(_ isMoving:Bool) {
         isCameraMoving = isMoving
+    }
+    
+    private func onMarkerSelected(_ place:SearchPlace) {
+        self.selectedPlace = place
+        self.isCameraMoving = true
     }
     
 }
