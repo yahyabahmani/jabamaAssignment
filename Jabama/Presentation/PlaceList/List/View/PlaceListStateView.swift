@@ -11,7 +11,7 @@ struct PlaceListStateView: View {
     @Environment(PlaceListMainViewModel.self) var viewModel
     var body: some View {
         ZStack{
-            switch viewModel.viewState {
+            switch viewModel.placeListState {
                 case .loading:
                 LoadingPlaceListView()
             case .idle:

@@ -10,4 +10,5 @@ enum MapEvent {
     case initializeCamera
     case changeCameraPosition(SearchPlace)
     case onCameraMove(Bool)
+    case onFetchingData(ViewState)
 }

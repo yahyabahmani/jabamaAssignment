@@ -13,8 +13,8 @@ class PlaceListMainViewModel:BaseViewModel<PlaceListEvent> {
     @ObservationIgnored
     @Inject private var apiService:PlaceListApiService
     
+    private(set) var placeListState:ViewState = .loading
     private(set) var viewState:ViewState = .loading
-    private(set) var typeSwitcherState:ViewState = .loading
     private(set) var places: [SearchPlace] = []
     private(set) var error:ErrorModel?
     @ObservationIgnored
@@ -25,6 +25,8 @@ class PlaceListMainViewModel:BaseViewModel<PlaceListEvent> {
     
     private(set) var isLocationAvailable:Bool = true
     private(set) var isNetworkAvailable:Bool = true
+    
+    
     
     @ObservationIgnored
     private var currentLimit:Int = 10
@@ -96,35 +98,35 @@ extension PlaceListMainViewModel{
     
     private func fetchPlaces(_ limit:Int = 10,isSilent:Bool = false){
         currentLimit = limit
-        typeSwitcherState = .loading
+        viewState = .loading
         if !isSilent{
-            viewState = .loading
+            placeListState = .loading
         }
         error = nil
         let query = SearchPlaceQuery(query:searchText,ll:"\(appLocation.latitude ?? 0),\(appLocation.longitude ?? 0)", limit: currentLimit)
         Task{
             do{
                 let res = try await apiService.searchPlaces(query: query).async()
-                typeSwitcherState = .idle
+                viewState = .idle
                 if let placesList = res.results, !placesList.isEmpty{
                     self.places = placesList
-                    self.viewState = .idle
+                    self.placeListState = .idle
                     if currentLimit >= 50{
                         canLoadMore = false
                     }
                 }else{
                     self.canLoadMore = false
-                    self.viewState = .empty
+                    self.placeListState = .empty
                     self.places.removeAll()
                 }
             }catch{
-                typeSwitcherState = .idle
+                viewState = .idle
                 let error = error.toModel()
                 if error.code == 1000{
                     isNetworkAvailable = false
                 }else{
                     self.error = error
-                    self.viewState = .error
+                    self.placeListState = .error
                 }
                 
             }

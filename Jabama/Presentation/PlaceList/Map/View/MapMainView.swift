@@ -46,6 +46,9 @@ struct MapMainView: View {
                 
             }
         }
+        .onChange(of: mainViewModel.viewState){
+            mapViewModel.onEvent(.onFetchingData($1))
+        }
     }
 }
 

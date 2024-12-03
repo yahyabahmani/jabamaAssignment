@@ -16,15 +16,13 @@ class MapViewModel:BaseViewModel<MapEvent> {
     private(set) var currentCameraLocation:AppLocation = .init()
     private(set) var isCameraMoving:Bool = false
     
-    @ObservationIgnored
-    var cancellables = Set<AnyCancellable>()
+    private(set)var isLoading:Bool = false
     
     override init() {
         super.init()
     }
     
     deinit{
-        cancellables.removeAll()
     }
     
     override func onEvent(_ event: MapEvent) {
@@ -38,6 +36,8 @@ class MapViewModel:BaseViewModel<MapEvent> {
             changeCameraPosition(place)
         case .onCameraMove(let isMoving):
             moveCamera(isMoving)
+        case .onFetchingData(let state):
+            onFetchingData(state)
         }
     }
     
@@ -58,6 +58,14 @@ extension MapViewModel {
     private func onMarkerSelected(_ place:SearchPlace) {
         self.selectedPlace = place
         self.isCameraMoving = true
+    }
+    
+    private func onFetchingData(_ state:ViewState) {
+        if state == .loading {
+            self.isLoading = true
+        }else{
+            self.isLoading = false
+        }
     }
     
 }

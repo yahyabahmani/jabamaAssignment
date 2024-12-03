@@ -50,7 +50,7 @@ struct MapPlaceListView: View {
     }
     
     private func markerAction(_ place:SearchPlace){
-        if !mapViewModel.isCameraMoving{
+        if !mapViewModel.isCameraMoving && !mapViewModel.isLoading{
             withAnimation{
                 mapViewModel.onEvent(.changeCameraPosition(place))
             }

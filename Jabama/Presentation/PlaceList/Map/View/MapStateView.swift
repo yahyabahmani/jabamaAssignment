@@ -11,9 +11,9 @@ struct MapStateView: View {
     @Environment(PlaceListMainViewModel.self) var mainViewModel
     @Environment(MapViewModel.self) var mapViewModel
     var body: some View {
-        if mainViewModel.viewState == .loading {
+        if mainViewModel.placeListState == .loading {
             MapLoadingView()
-        }else if mainViewModel.viewState == .idle{
+        }else if mainViewModel.placeListState == .idle{
             MapPlaceListView()
                 .environment(mainViewModel)
                 .environment(mapViewModel)
