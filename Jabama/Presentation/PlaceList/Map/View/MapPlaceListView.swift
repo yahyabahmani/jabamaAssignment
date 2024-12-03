@@ -17,6 +17,10 @@ struct MapPlaceListView: View {
                     PlaceItemView(searchPlace: place)
                         .environment(mainViewModel)
                         .tag(place.id ?? UUID().uuidString)
+                        .scrollTransition(.interactive, axis: .horizontal) { effect, phase in
+                            effect.scaleEffect(phase.isIdentity ? 1.0 : 0.95)
+                        }
+                    
                 }
                 
                 if mainViewModel.canLoadMore{
@@ -28,9 +32,11 @@ struct MapPlaceListView: View {
                         }
                 }
             }
+            .scrollTargetLayout()
             .animation(.default, value: mainViewModel.places)
             .padding(.horizontal,8)
         }
+        .scrollTargetBehavior(.viewAligned)
         .frame(height: 200)
     }
 }
