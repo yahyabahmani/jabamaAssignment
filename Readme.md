@@ -11,6 +11,8 @@ This project demonstrates an iOS application built with MVVM, event-driven clean
 - by clicking on Marker in the map, scroll view automatically scrolls to the place in the list.
 - by moving map camera that location places will be shown in the list and map.
 - by clicking on the place in the list, the map camera will move to the place location.
+- implement all states for the project including loading, error, and empty states.
+- implement disaster recovery for the project.
 
 ## Key Development Features
 
