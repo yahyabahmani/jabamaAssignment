@@ -13,7 +13,7 @@ class NetworkReachability: ObservableObject {
     private let reachability = SCNetworkReachabilityCreateWithName(nil, "www.apple.com")
 
     init() {
-        self.reachable = checkConnection()
+        self.reachable = isConnected()
     }
 
     private func isNetworkReachable(with flags: SCNetworkReachabilityFlags) -> Bool {
@@ -24,7 +24,7 @@ class NetworkReachability: ObservableObject {
         return isReachable && (!connectionRequired || canConnectWithoutIntervention)
     }
 
-    func checkConnection() -> Bool {
+    func isConnected() -> Bool {
         var flags = SCNetworkReachabilityFlags()
         SCNetworkReachabilityGetFlags(reachability!, &flags)
 

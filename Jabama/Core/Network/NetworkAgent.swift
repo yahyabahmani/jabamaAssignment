@@ -48,8 +48,8 @@ struct NetworkAgent {
                 if let error = $0 as? ErrorModel {
                     return error
                 } else {
-                    if !networkReachability.reachable{
-                        return ErrorModel(code: 0,message: "Please check your internet connection.")
+                    if !networkReachability.isConnected(){
+                        return ErrorModel(code: 1000,message: "Please check your internet connection.")
                     }else{
                         return ErrorModel(code: 0,message: "Unknown Error")
                     }

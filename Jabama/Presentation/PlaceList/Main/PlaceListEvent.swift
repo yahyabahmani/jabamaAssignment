@@ -11,4 +11,6 @@ enum PlaceListEvent {
     case onSearchTextChanged(String)
     case onLocationChange(AppLocation)
     case fetchPlaces
+    case changeGpsStatus(Bool)
+    case changeNetworkStatus(Bool)
 }

@@ -22,6 +22,9 @@ class PlaceListMainViewModel:BaseViewModel<PlaceListEvent> {
     
     private(set) var viewType: PlaceListViewType = .list
     
+    private(set) var isLocationAvailable:Bool = true
+    private(set) var isNetworkAvailable:Bool = true
+    
     @ObservationIgnored
     private var currentLimit:Int = 10
     
@@ -63,7 +66,10 @@ class PlaceListMainViewModel:BaseViewModel<PlaceListEvent> {
             self.onLocationChange(location)
         case .fetchPlaces:
             self.fetchPlaces()
-            
+        case .changeGpsStatus(let isAvailable):
+            self.isLocationAvailable = isAvailable
+        case .changeNetworkStatus(let isAvailable):
+            self.isNetworkAvailable = isAvailable
         }
     }
 }
@@ -109,8 +115,14 @@ extension PlaceListMainViewModel{
                     self.places.removeAll()
                 }
             }catch{
-                self.error = error.toModel()
-                self.viewState = .error
+                let error = error.toModel()
+                if error.code == 1000{
+                    isNetworkAvailable = false
+                }else{
+                    self.error = error
+                    self.viewState = .error
+                }
+                
             }
         }
     }

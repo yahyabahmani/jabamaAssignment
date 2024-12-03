@@ -1,5 +1,5 @@
 //
-//  NoNetworkView.swift
+//  NoGpsView.swift
 //  Jabama
 //
 //  Created by Mohsen on 12/3/24.
@@ -7,26 +7,28 @@
 
 import SwiftUI
 
-struct NoNetworkView: View {
+struct NoGpsView: View {
     var onRetry: () -> Void = { }
     @State private var showBackground: Bool = false
     var body: some View {
         ZStack {
             Color.black.opacity(showBackground ? 0.4 : 0.0)
                 .ignoresSafeArea()
+            
             VStack(spacing:12){
-                Image(systemName: "wifi.exclamationmark")
+                Image(systemName: "location.slash")
                     .font(.largeTitle)
                     .foregroundStyle(.black)
                 
-                Text("No Internet Connection")
+                Text("Location Not Available")
                     .font(.title2)
                     .foregroundStyle(.black)
                 
-                Text("Please check your internet connection and try again.")
+                Text("Please check your Location Access settings and try again.")
                     .font(.body)
                     .foregroundStyle(.black)
                     .multilineTextAlignment(.center)
+                
                 
                 Button {
                     onRetry()
@@ -36,15 +38,14 @@ struct NoNetworkView: View {
                         .foregroundStyle(.blue)
                 }
                 .buttonStyle(.plain)
-                
             }
-            .frame(height:260)
             .padding()
+            .frame(height:260)
             .frame(maxWidth: .infinity)
             .background(.white)
             .cornerRadius(20)
             .task {
-                withAnimation(.easeInOut(duration: 0.5)){
+                withAnimation(.easeInOut(duration: 0.6)){
                     showBackground = true
                 }
             }
@@ -53,5 +54,5 @@ struct NoNetworkView: View {
 }
 
 #Preview {
-    NoNetworkView()
+    NoGpsView()
 }
