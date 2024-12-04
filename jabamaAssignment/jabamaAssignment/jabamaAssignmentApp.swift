@@ -11,7 +11,7 @@ import SwiftUI
 struct jabamaAssignmentApp: App {
     var body: some Scene {
         WindowGroup {
-            
+            ContentView()
         }
     }
 }
