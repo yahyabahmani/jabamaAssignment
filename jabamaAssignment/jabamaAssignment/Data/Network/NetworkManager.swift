@@ -13,15 +13,17 @@ protocol NetworkManagerProtocol {
 
 final class NetworkManager: NetworkManagerProtocol {
     private let session: URLSessionProtocol
+    private let apiConfig: APIConfigProtocol
     
-    init(session: URLSessionProtocol = URLSession.shared) {
-        self.session = session
-    }
+    init(session: URLSessionProtocol = URLSession.shared, apiConfig: APIConfigProtocol = APIConfig()) {
+         self.session = session
+         self.apiConfig = apiConfig
+     }
     
     private var defaultHeaders: [String: String] {
         [
             "accept": "application/json",
-            "Authorization": APIConfig.apiToken
+            "Authorization": apiConfig.apiToken
         ]
     }
     

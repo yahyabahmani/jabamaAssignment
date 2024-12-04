@@ -21,8 +21,8 @@ enum HTTPMethod: String {
 }
 
 extension APIEndpoint {
-    static func searchPlaces(query: String) -> APIEndpoint {
-        let url = "\(APIConfig.baseURL)/places/search"
+    static func searchPlaces(query: String, apiConfig: APIConfigProtocol = APIConfig()) -> APIEndpoint {
+        let url = "\(apiConfig.baseURL)/places/search"
         return APIEndpoint(
             url: url,
             method: .GET,
