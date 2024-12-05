@@ -31,11 +31,11 @@ final class NetworkManager: NetworkManagerProtocol {
         guard var components = URLComponents(string: endpoint.url) else {
             throw NetworkError.badURL
         }
-        
+
         if let queryItems = endpoint.queryItems {
             components.queryItems = (components.queryItems ?? []) + queryItems
         }
-        
+
         guard let url = components.url else {
             throw NetworkError.badURL
         }
@@ -50,17 +50,25 @@ final class NetworkManager: NetworkManagerProtocol {
 
         do {
             let (data, response) = try await session.data(for: request)
-            
-            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-                throw NetworkError.serverError(statusCode: (response as? HTTPURLResponse)?.statusCode ?? 0)
+
+            guard let httpResponse = response as? HTTPURLResponse else {
+                throw NetworkError.custom(message: "Invalid response received")
             }
-            
+
+            guard (200...299).contains(httpResponse.statusCode) else {
+                throw NetworkError.serverError(statusCode: httpResponse.statusCode)
+            }
+
+            // Decode the response data
             do {
                 let decodedResponse = try JSONDecoder().decode(T.self, from: data)
                 return decodedResponse
             } catch {
                 throw NetworkError.decodingError(error: error)
             }
+
+        } catch let error as NetworkError {
+            throw error
         } catch {
             throw NetworkError.custom(message: error.localizedDescription)
         }
