@@ -19,16 +19,3 @@ enum HTTPMethod: String {
     case PUT
     case DELETE
 }
-
-extension APIEndpoint {
-    static func searchPlaces(query: String, apiConfig: APIConfigProtocol = APIConfig()) -> APIEndpoint {
-        let url = "\(apiConfig.baseURL)/places/search"
-        return APIEndpoint(
-            url: url,
-            method: .GET,
-            queryItems: [
-                URLQueryItem(name: "query", value: query)
-            ]
-        )
-    }
-}
