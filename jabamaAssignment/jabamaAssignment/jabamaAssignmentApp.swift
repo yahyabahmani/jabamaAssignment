@@ -11,7 +11,11 @@ import SwiftUI
 struct jabamaAssignmentApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            let networkManager = NetworkManager()
+            let mapRepository = MapRepository(networkManager: networkManager)
+            let getPlacesUseCase = GetPlacesUseCase(repository: mapRepository)
+            let mapViewModel = MapViewModel(getPlacesUseCase: getPlacesUseCase)
+            MapView(viewModel: mapViewModel)
         }
     }
 }
