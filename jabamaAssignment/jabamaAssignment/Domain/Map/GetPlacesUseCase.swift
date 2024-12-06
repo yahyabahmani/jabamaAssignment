@@ -7,10 +7,6 @@
 
 import Foundation
 
-protocol GetPlacesUseCaseProtocol {
-    func execute(query: String) async throws(NetworkError) -> [Place]
-}
-
 final class GetPlacesUseCase: GetPlacesUseCaseProtocol {
     private let repository: MapRepositoryProtocol
     
