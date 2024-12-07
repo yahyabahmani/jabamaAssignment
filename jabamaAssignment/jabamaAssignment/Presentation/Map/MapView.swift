@@ -10,13 +10,19 @@ import MapKit
 
 struct MapView: View {
     @StateObject private var viewModel: MapViewModel
-
-    init(viewModel: MapViewModel) {
+    private let searchPlacesViewModelFactory: (String) -> SearchPlacesViewModel
+    
+    init(
+        viewModel: MapViewModel,
+        searchPlacesViewModelFactory: @escaping (String) -> SearchPlacesViewModel
+    ) {
         _viewModel = StateObject(wrappedValue: viewModel)
+        self.searchPlacesViewModelFactory = searchPlacesViewModelFactory
     }
-
+    
     var body: some View {
-        ZStack(alignment: .bottom) {
+        ZStack(alignment: .top) {
+            // Map
             Map(position: $viewModel.cameraPosition) {
                 ForEach(viewModel.places) { place in
                     if let latitude = place.geocodes.main.latitude,
@@ -44,29 +50,65 @@ struct MapView: View {
                 viewModel.updateCameraPosition(for: newValue)
             }
             
-            ScrollView(.horizontal) {
-                LazyHStack(spacing: 0) {
-                    ForEach(viewModel.places) { place in
-                        PlaceCardView(place: place)
-                            .frame(width: UIScreen.main.bounds.width)
-                            .onTapGesture {
-                                viewModel.visiblePlaceID = place.id
-                            }
-                    }
+            VStack {
+                HStack {
+                    Text(viewModel.query.isEmpty ? "Search Places" : viewModel.query)
+                        .font(.headline)
+                        .foregroundColor(.primary)
+                        .padding()
+                        .frame(maxWidth: .infinity) // Full width
+                        .background(Color(.systemGray6).opacity(0.9))
+                        .cornerRadius(10)
+                        .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
+                        .onTapGesture {
+                            viewModel.isShowingSearch = true
+                        }
                 }
-                .scrollTargetLayout()
+                .padding(.horizontal)
+                Spacer()
             }
-            .scrollTargetBehavior(.paging)
-            .scrollPosition(id: $viewModel.visiblePlaceID)
-            .frame(height: 100)
-            .background(Color.gray.opacity(0.9))
+            if !viewModel.places.isEmpty {
+                VStack {
+                    Spacer()
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        LazyHStack(spacing: 0) {
+                            ForEach(viewModel.places) { place in
+                                PlaceCardView(place: place)
+                                    .frame(width: UIScreen.main.bounds.width)
+                                    .onTapGesture {
+                                        viewModel.visiblePlaceID = place.id
+                                    }
+                            }
+                        }
+                        .scrollTargetLayout()
+                    }
+                    .scrollTargetBehavior(.paging)
+                    .scrollPosition(id: $viewModel.visiblePlaceID)
+                    .frame(height: 100)
+                    .background(Color.gray.opacity(0.9))
+                }
+            }
+        }
+        .sheet(isPresented: $viewModel.isShowingSearch) {
+            let searchViewModel = searchPlacesViewModelFactory(viewModel.query)
+            SearchPlacesView(viewModel: searchViewModel) { selectedPlaces, searchedQuery in
+                viewModel.places = selectedPlaces
+                viewModel.query = searchedQuery
+                viewModel.isShowingSearch = false
+                viewModel.visiblePlaceID = selectedPlaces.first?.id
+            }
         }
     }
 }
 
-
 #Preview {
     let mapViewModel = MapViewModel(getPlacesUseCase: MockGetPlacesUseCase())
-    MapView(viewModel: mapViewModel)
+    let factory = DependencyFactory()
+    MapView(
+        viewModel: mapViewModel,
+        searchPlacesViewModelFactory: { query in
+            factory.makeSearchPlacesViewModel(query: query)
+        }
+    )
 }
 

@@ -20,6 +20,8 @@ final class MapViewModel: ObservableObject {
             span: MKCoordinateSpan(latitudeDelta: 1.05, longitudeDelta: 0.05)
         )
     )
+    @Published var isShowingSearch: Bool = false
+    
     
     private let getPlacesUseCase: GetPlacesUseCaseProtocol
 

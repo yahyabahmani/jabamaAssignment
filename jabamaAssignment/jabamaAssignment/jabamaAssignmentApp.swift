@@ -8,14 +8,19 @@
 import SwiftUI
 
 @main
-struct jabamaAssignmentApp: App {
+struct JabamaAssignmentApp: App {
+    private let factory = DependencyFactory()
+
     var body: some Scene {
         WindowGroup {
-            let networkManager = NetworkManager()
-            let mapRepository = MapRepository(networkManager: networkManager)
-            let getPlacesUseCase = GetPlacesUseCase(repository: mapRepository)
-            let mapViewModel = MapViewModel(getPlacesUseCase: getPlacesUseCase)
-            MapView(viewModel: mapViewModel)
+
+            let mapViewModel = factory.makeMapViewModel()
+            MapView(
+                viewModel: mapViewModel,
+                searchPlacesViewModelFactory: { query in
+                    factory.makeSearchPlacesViewModel(query: query)
+                }
+            )
         }
     }
 }

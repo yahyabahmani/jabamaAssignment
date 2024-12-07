@@ -45,3 +45,4 @@ let mockPlace = [Place(
     link: "https://example.com/mock-place",
     timezone: "PST"
 )]
+

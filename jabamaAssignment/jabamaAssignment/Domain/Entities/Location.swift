@@ -8,7 +8,7 @@
 import Foundation
 
 struct Location: Codable, Equatable, Hashable {
-    let address: String
+    let address: String?
     let formatted_address: String
     let locality: String?
     let region: String?

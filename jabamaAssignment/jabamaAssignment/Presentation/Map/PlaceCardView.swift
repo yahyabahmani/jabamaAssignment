@@ -17,8 +17,10 @@ struct PlaceCardView: View {
             VStack(alignment: .leading) {
                 Text(place.name)
                     .font(.headline)
-                Text(place.location.address)
-                    .font(.subheadline)
+                if let address = place.location?.address {
+                    Text(address)
+                        .font(.subheadline)
+                }               
             }
         }
         .frame(maxWidth:.infinity, alignment: .leading)

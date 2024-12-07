@@ -59,7 +59,6 @@ final class NetworkManager: NetworkManagerProtocol {
                 throw NetworkError.serverError(statusCode: httpResponse.statusCode)
             }
 
-            // Decode the response data
             do {
                 let decodedResponse = try JSONDecoder().decode(T.self, from: data)
                 return decodedResponse
