@@ -9,9 +9,11 @@ import SwiftUI
 import MapKit
 
 struct MapView: View {
+    // MARK: - Properties
     @StateObject private var viewModel: MapViewModel
     private let searchPlacesViewModelFactory: (String) -> SearchPlacesViewModel
     
+    // MARK: - Initializer
     init(
         viewModel: MapViewModel,
         searchPlacesViewModelFactory: @escaping (String) -> SearchPlacesViewModel
@@ -20,8 +22,10 @@ struct MapView: View {
         self.searchPlacesViewModelFactory = searchPlacesViewModelFactory
     }
     
+    // MARK: - Body
     var body: some View {
         ZStack(alignment: .top) {
+            // MARK: - Map View
             Map(position: $viewModel.cameraPosition) {
                 ForEach(viewModel.places) { place in
                     if let latitude = place.geocodes.main.latitude,
@@ -49,6 +53,7 @@ struct MapView: View {
                 viewModel.updateCameraPosition(for: newValue)
             }
             
+            // MARK: - Search Bar
             VStack {
                 HStack {
                     Text(viewModel.query.isEmpty ? "Search Places" : viewModel.query)
@@ -65,8 +70,9 @@ struct MapView: View {
                 }
                 .padding(.horizontal)
                 Spacer()
-               
             }
+            
+            // MARK: - Places Carousel
             if !viewModel.places.isEmpty {
                 VStack {
                     Spacer()
@@ -95,6 +101,7 @@ struct MapView: View {
                     .background(Color.gray.opacity(0.9))
                     .overlay {
                         if viewModel.isLoadingMore {
+                            // MARK: - Loading More Overlay
                             ZStack {
                                 Color.black.opacity(0.4)
                                     .ignoresSafeArea()
@@ -111,6 +118,8 @@ struct MapView: View {
                     }
                 }
             }
+            
+            // MARK: - Error View
             if let errorMessage = viewModel.error {
                 NetworkErrorView(
                     errorMessage: errorMessage,
@@ -127,6 +136,7 @@ struct MapView: View {
             }
         }
         
+        // MARK: - Search Sheet
         .sheet(isPresented: $viewModel.isShowingSearch) {
             let searchViewModel = searchPlacesViewModelFactory(viewModel.query)
             SearchPlacesView(viewModel: searchViewModel) { selectedPlaces, searchedQuery in
@@ -138,6 +148,7 @@ struct MapView: View {
         }
     }
 }
+
 
 #Preview {
     let mapViewModel = MapViewModel(getPlacesUseCase: MockGetPlacesUseCase())

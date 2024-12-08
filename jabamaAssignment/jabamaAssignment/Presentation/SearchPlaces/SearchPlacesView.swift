@@ -8,17 +8,21 @@
 import SwiftUI
 
 struct SearchPlacesView: View {
+    // MARK: - Properties
     @StateObject private var viewModel: SearchPlacesViewModel
     var onShowOnMap: ([Place], String) -> Void
-
+    
+    // MARK: - Initializer
     init(viewModel: SearchPlacesViewModel, onShowOnMap: @escaping ([Place], String) -> Void) {
         _viewModel = StateObject(wrappedValue: viewModel)
         self.onShowOnMap = onShowOnMap
     }
-
+    
+    // MARK: - Body
     var body: some View {
         ZStack {
             VStack {
+                // MARK: - Search Field
                 TextField("Search for places", text: $viewModel.query)
                     .onChange(of: viewModel.query) { _, _ in
                         viewModel.isSearchMode = true
@@ -36,18 +40,21 @@ struct SearchPlacesView: View {
                             viewModel.isSearchMode = false
                         }
                     }
-
+                
                 Spacer(minLength: 20)
-
+                
+                // MARK: - Loading State
                 if viewModel.isLoading {
                     ProgressView("Searching...")
                         .padding()
-                } else if viewModel.places.isEmpty {
+                }
+                // MARK: - No Results Found
+                else if viewModel.places.isEmpty {
                     VStack(spacing: 16) {
                         Text("No results found")
                             .foregroundColor(.gray)
                             .font(.headline)
-
+                        
                         Image(systemName: "magnifyingglass")
                             .resizable()
                             .scaledToFit()
@@ -55,7 +62,9 @@ struct SearchPlacesView: View {
                             .foregroundColor(.gray.opacity(0.5))
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                } else {
+                }
+                // MARK: - Places List
+                else {
                     ScrollView {
                         LazyVStack(spacing: 10) {
                             ForEach(viewModel.places) { place in
@@ -76,9 +85,10 @@ struct SearchPlacesView: View {
                         .padding(.top, 10)
                     }
                 }
-
+                
                 Spacer()
-
+                
+                // MARK: - Action Button
                 if !viewModel.places.isEmpty || viewModel.isSearchMode {
                     Button(action: {
                         if viewModel.isSearchMode {
@@ -105,8 +115,8 @@ struct SearchPlacesView: View {
                 }
             }
             .padding(.top, 16)
-
-            // Network Error View
+            
+            // MARK: - Network Error View
             if let errorMessage = viewModel.error {
                 NetworkErrorView(
                     errorMessage: errorMessage,
@@ -123,6 +133,7 @@ struct SearchPlacesView: View {
             }
         }
     }
+    
 }
 
 #Preview {

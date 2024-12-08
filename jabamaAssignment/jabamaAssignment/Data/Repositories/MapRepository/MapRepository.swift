@@ -33,9 +33,5 @@ final class MapRepository: MapRepositoryProtocol, Paginatable {
         nextPageURL = nextPage
         return response.results
     }
-
-    func resetPagination() {
-        nextPageURL = nil
-    }
 }
 
