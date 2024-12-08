@@ -17,9 +17,7 @@ struct JabamaAssignmentApp: App {
             let mapViewModel = factory.makeMapViewModel()
             MapView(
                 viewModel: mapViewModel,
-                searchPlacesViewModelFactory: { query in
-                    factory.makeSearchPlacesViewModel(query: query)
-                }
+                searchPlacesViewModelFactory: factory.makeSearchPlacesViewModel()
             )
         }
     }

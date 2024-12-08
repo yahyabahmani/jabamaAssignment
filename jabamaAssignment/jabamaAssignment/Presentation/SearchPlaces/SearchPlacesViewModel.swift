@@ -18,11 +18,8 @@ final class SearchPlacesViewModel: ObservableObject {
 
     private let searchPlacesUseCase: SearchPlacesUseCaseProtocol
 
-    init(searchPlacesUseCase: SearchPlacesUseCaseProtocol, initialQuery: String? = nil) {
+    init(searchPlacesUseCase: SearchPlacesUseCaseProtocol) {
         self.searchPlacesUseCase = searchPlacesUseCase
-        if let initialQuery = initialQuery {
-            self.query = initialQuery
-        }
     }
 
     func searchPlaces() async {

@@ -14,13 +14,12 @@ final class DependencyFactory {
         return MapViewModel(getPlacesUseCase: getPlacesUseCase)
     }
     
-     func makeSearchPlacesViewModel(query: String) -> SearchPlacesViewModel {
+     func makeSearchPlacesViewModel() -> SearchPlacesViewModel {
         let networkManager = NetworkManager()
         let searchRepository = SearchRepository(networkManager: networkManager)
         let searchPlacesUseCase = SearchPlacesUseCase(repository: searchRepository)
         return SearchPlacesViewModel(
-            searchPlacesUseCase: searchPlacesUseCase,
-            initialQuery: query
+            searchPlacesUseCase: searchPlacesUseCase           
         )
     }
 }

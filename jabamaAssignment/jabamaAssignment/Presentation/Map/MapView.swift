@@ -11,12 +11,12 @@ import MapKit
 struct MapView: View {
     // MARK: - Properties
     @StateObject private var viewModel: MapViewModel
-    private let searchPlacesViewModelFactory: (String) -> SearchPlacesViewModel
+    private let searchPlacesViewModelFactory: SearchPlacesViewModel
     
     // MARK: - Initializer
     init(
         viewModel: MapViewModel,
-        searchPlacesViewModelFactory: @escaping (String) -> SearchPlacesViewModel
+        searchPlacesViewModelFactory: SearchPlacesViewModel
     ) {
         _viewModel = StateObject(wrappedValue: viewModel)
         self.searchPlacesViewModelFactory = searchPlacesViewModelFactory
@@ -138,10 +138,8 @@ struct MapView: View {
         
         // MARK: - Search Sheet
         .sheet(isPresented: $viewModel.isShowingSearch) {
-            let searchViewModel = searchPlacesViewModelFactory(viewModel.query)
-            SearchPlacesView(viewModel: searchViewModel) { selectedPlaces, searchedQuery in
+            SearchPlacesView(viewModel: searchPlacesViewModelFactory) { selectedPlaces in
                 viewModel.places = selectedPlaces
-                viewModel.query = searchedQuery
                 viewModel.isShowingSearch = false
                 viewModel.visiblePlaceID = selectedPlaces.first?.id
             }
@@ -155,9 +153,7 @@ struct MapView: View {
     let factory = DependencyFactory()
     MapView(
         viewModel: mapViewModel,
-        searchPlacesViewModelFactory: { query in
-            factory.makeSearchPlacesViewModel(query: query)
-        }
+        searchPlacesViewModelFactory: factory.makeSearchPlacesViewModel()
     )
 }
 

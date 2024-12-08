@@ -10,10 +10,10 @@ import SwiftUI
 struct SearchPlacesView: View {
     // MARK: - Properties
     @StateObject private var viewModel: SearchPlacesViewModel
-    var onShowOnMap: ([Place], String) -> Void
+    var onShowOnMap: ([Place]) -> Void
     
     // MARK: - Initializer
-    init(viewModel: SearchPlacesViewModel, onShowOnMap: @escaping ([Place], String) -> Void) {
+    init(viewModel: SearchPlacesViewModel, onShowOnMap: @escaping ([Place]) -> Void) {
         _viewModel = StateObject(wrappedValue: viewModel)
         self.onShowOnMap = onShowOnMap
     }
@@ -98,7 +98,7 @@ struct SearchPlacesView: View {
                                 viewModel.isSearchMode = false
                             }
                         } else {
-                            onShowOnMap(viewModel.places, viewModel.query)
+                            onShowOnMap(viewModel.places)
                         }
                     }) {
                         Text(viewModel.isSearchMode ? "Search" : "Show on Map")
@@ -138,7 +138,7 @@ struct SearchPlacesView: View {
 
 #Preview {
     let searchPlacesViewModel = SearchPlacesViewModel(searchPlacesUseCase: MockGetSearchPlacesUseCase())
-    SearchPlacesView(viewModel: searchPlacesViewModel) { places, searchedText  in
+    SearchPlacesView(viewModel: searchPlacesViewModel) { places in
         print("Selected places to show on map: \(places)")
     }
 }
