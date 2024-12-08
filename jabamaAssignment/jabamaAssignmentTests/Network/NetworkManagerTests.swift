@@ -16,8 +16,7 @@ final class NetworkManagerTests: XCTestCase {
     private var commonEndpoint: APIEndpoint {
         APIEndpoint(
             url: "https://mock.api.example.com/endpoint",
-            method: .GET,
-            queryItems: [URLQueryItem(name: "query", value: "Test")]
+            method: .GET
         )
     }
     
@@ -44,14 +43,20 @@ final class NetworkManagerTests: XCTestCase {
             url: URL(string: commonEndpoint.url)!,
             statusCode: 200,
             httpVersion: nil,
-            headerFields: nil
+            headerFields: [
+                "link": "https://mock.api.example.com/next-page"
+            ]
         )
 
         // Act
-        let response: MyModel = try await networkManager.fetchData(endpoint: commonEndpoint, responseModel: MyModel.self)
+        let (response, nextPageURL): (MyModel, String?) = try await networkManager.fetchData(
+            endpoint: commonEndpoint,
+            responseModel: MyModel.self
+        )
 
         // Assert
         XCTAssertEqual(response.key, "value")
+        XCTAssertEqual(nextPageURL, "https://mock.api.example.com/next-page")
     }
     
     func testFetchDataServerError() async {
@@ -136,8 +141,7 @@ final class NetworkManagerTests: XCTestCase {
         // Arrange
         let endpoint = APIEndpoint(
             url: "ht*tp://invalid-url", // Invalid URL
-            method: .GET,
-            queryItems: nil
+            method: .GET
         )
 
         // Act & Assert
@@ -152,6 +156,3 @@ final class NetworkManagerTests: XCTestCase {
     }
 }
 
-struct MyModel: Codable, Equatable {
-    let key: String
-}
