@@ -21,7 +21,7 @@ final class MapViewModel: ObservableObject {
         )
     )
     @Published var isShowingSearch: Bool = false
-    
+    @Published var isLoadingMore: Bool = false
     
     private let getPlacesUseCase: GetPlacesUseCaseProtocol
 
@@ -50,6 +50,19 @@ final class MapViewModel: ObservableObject {
                 span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02) // Adjust zoom level here
             )
         )
+    }
+    
+    func loadMorePlaces() async {
+        guard !isLoadingMore else { return }
+        isLoadingMore = true
+        error = nil
+        do {
+            let morePlaces = try await getPlacesUseCase.executeNextPage()
+            places.append(contentsOf: morePlaces)
+        } catch {
+            self.error = error.localizedDescription
+        }
+        isLoadingMore = false
     }
 }
 

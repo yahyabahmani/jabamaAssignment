@@ -8,7 +8,10 @@
 import Foundation
 
 protocol NetworkManagerProtocol {
-    func fetchData<T: Decodable>(endpoint: APIEndpoint, responseModel: T.Type) async throws(NetworkError) -> T
+    func fetchData<T: Decodable>(
+        endpoint: APIEndpoint,
+        responseModel: T.Type
+    ) async throws(NetworkError) -> (data: T, nextPageURL: String?)
 }
 
 final class NetworkManager: NetworkManagerProtocol {
@@ -27,27 +30,21 @@ final class NetworkManager: NetworkManagerProtocol {
         ]
     }
     
-    func fetchData<T: Decodable>(endpoint: APIEndpoint, responseModel: T.Type) async throws(NetworkError) -> T {
-        guard var components = URLComponents(string: endpoint.url) else {
+    func fetchData<T: Decodable>(
+        endpoint: APIEndpoint,
+        responseModel: T.Type
+    ) async throws(NetworkError) -> (data: T, nextPageURL: String?) {
+        guard let url = URL(string: endpoint.url) else {
             throw NetworkError.badURL
         }
-
-        if let queryItems = endpoint.queryItems {
-            components.queryItems = (components.queryItems ?? []) + queryItems
-        }
-
-        guard let url = components.url else {
-            throw NetworkError.badURL
-        }
-
         var request = URLRequest(url: url)
         request.httpMethod = endpoint.method.rawValue
         request.timeoutInterval = 10
-
+        
         for (key, value) in defaultHeaders {
             request.setValue(value, forHTTPHeaderField: key)
         }
-
+        
         do {
             let (data, response) = try await session.data(for: request)
 
@@ -59,9 +56,11 @@ final class NetworkManager: NetworkManagerProtocol {
                 throw NetworkError.serverError(statusCode: httpResponse.statusCode)
             }
 
+            let nextPageURL = httpResponse.value(forHTTPHeaderField: "link")
+
             do {
                 let decodedResponse = try JSONDecoder().decode(T.self, from: data)
-                return decodedResponse
+                return (decodedResponse, nextPageURL)
             } catch {
                 throw NetworkError.decodingError(error: error)
             }

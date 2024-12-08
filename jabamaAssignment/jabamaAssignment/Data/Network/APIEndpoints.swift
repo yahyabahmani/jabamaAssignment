@@ -10,7 +10,6 @@ import Foundation
 struct APIEndpoint {
     let url: String
     let method: HTTPMethod
-    let queryItems: [URLQueryItem]?
 }
 
 enum HTTPMethod: String {

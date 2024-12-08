@@ -13,26 +13,40 @@ final class SearchPlacesViewModel: ObservableObject {
     @Published var places: [Place] = []
     @Published var error: String? = nil
     @Published var isLoading: Bool = false
+    @Published var isLoadingMore: Bool = false
     @Published var isSearchMode: Bool = true
-    
-    private let searchPlacesUseCaseProtocol: SearchPlacesUseCaseProtocol
-    
-    init(searchPlacesUseCaseProtocol: SearchPlacesUseCaseProtocol, initialQuery: String? = nil) {
-        self.searchPlacesUseCaseProtocol = searchPlacesUseCaseProtocol
+
+    private let searchPlacesUseCase: SearchPlacesUseCaseProtocol
+
+    init(searchPlacesUseCase: SearchPlacesUseCaseProtocol, initialQuery: String? = nil) {
+        self.searchPlacesUseCase = searchPlacesUseCase
         if let initialQuery = initialQuery {
             self.query = initialQuery
         }
     }
-    
+
     func searchPlaces() async {
         isLoading = true
         error = nil
         do {
-            let fetchedPlaces = try await searchPlacesUseCaseProtocol.execute(query: query)
-            places = searchPlacesUseCaseProtocol.filterPlaces(fetchedPlaces, by: query)
-        } catch(let error) {
+            let fetchedPlaces = try await searchPlacesUseCase.execute(query: query)
+            places = searchPlacesUseCase.filterPlaces(fetchedPlaces, by: query)
+        } catch {
             self.error = error.localizedDescription
         }
         isLoading = false
+    }
+
+    func loadMorePlaces() async {
+        guard !isLoadingMore else { return }
+        isLoadingMore = true
+        error = nil
+        do {
+            let morePlaces = try await searchPlacesUseCase.executeNextPage()
+            places.append(contentsOf: searchPlacesUseCase.filterPlaces(morePlaces, by: query))
+        } catch {
+            self.error = error.localizedDescription
+        }
+        isLoadingMore = false
     }
 }
