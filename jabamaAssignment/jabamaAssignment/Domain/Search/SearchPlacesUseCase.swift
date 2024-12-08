@@ -8,9 +8,9 @@
 import Foundation
 
 final class SearchPlacesUseCase: SearchPlacesUseCaseProtocol {
-    private let repository: MapRepositoryProtocol
+    private let repository: SearchRepositoryProtocol
     
-    init(repository: MapRepositoryProtocol) {
+    init(repository: SearchRepositoryProtocol) {
         self.repository = repository
     }
     

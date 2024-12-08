@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class SearchRepository: MapRepositoryProtocol {
+final class SearchRepository: SearchRepositoryProtocol {
     private let networkManager: NetworkManagerProtocol
     private let apiConfig: APIConfigProtocol
     
