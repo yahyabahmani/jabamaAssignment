@@ -65,6 +65,7 @@ struct MapView: View {
                 }
                 .padding(.horizontal)
                 Spacer()
+               
             }
             if !viewModel.places.isEmpty {
                 VStack {
@@ -110,7 +111,22 @@ struct MapView: View {
                     }
                 }
             }
+            if let errorMessage = viewModel.error {
+                NetworkErrorView(
+                    errorMessage: errorMessage,
+                    onRetry: {
+                        Task {
+                            viewModel.error = nil
+                            await viewModel.searchPlaces()
+                        }
+                    }
+                )
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color.black.opacity(0.5))
+                .transition(.opacity)
+            }
         }
+        
         .sheet(isPresented: $viewModel.isShowingSearch) {
             let searchViewModel = searchPlacesViewModelFactory(viewModel.query)
             SearchPlacesView(viewModel: searchViewModel) { selectedPlaces, searchedQuery in
