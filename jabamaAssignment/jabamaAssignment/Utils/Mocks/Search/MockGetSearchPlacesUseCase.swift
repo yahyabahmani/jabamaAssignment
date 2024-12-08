@@ -9,6 +9,14 @@ import Foundation
 
 
 final class MockGetSearchPlacesUseCase: SearchPlacesUseCaseProtocol {
+    func executeNextPage() async throws -> [Place] {
+        return mockPlace
+    }
+    
+    func resetSearch() {
+        
+    }
+    
     func filterPlaces(_ places: [Place], by prefix: String) -> [Place] {
         return mockPlace
     }

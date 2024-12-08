@@ -8,5 +8,5 @@
 import Foundation
 
 protocol MapRepositoryProtocol {
-    func getPlaces(query: String) async throws(NetworkError) -> [Place]
+    func getPlaces(query: String) async throws -> [Place]
 }

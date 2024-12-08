@@ -22,7 +22,6 @@ struct MapView: View {
     
     var body: some View {
         ZStack(alignment: .top) {
-            // Map
             Map(position: $viewModel.cameraPosition) {
                 ForEach(viewModel.places) { place in
                     if let latitude = place.geocodes.main.latitude,
@@ -78,6 +77,13 @@ struct MapView: View {
                                     .onTapGesture {
                                         viewModel.visiblePlaceID = place.id
                                     }
+                                    .onAppear {
+                                        if place.id == viewModel.places.last?.id && viewModel.places.count >= 10 {
+                                            Task {
+                                                await viewModel.loadMorePlaces()
+                                            }
+                                        }
+                                    }
                             }
                         }
                         .scrollTargetLayout()
@@ -86,6 +92,22 @@ struct MapView: View {
                     .scrollPosition(id: $viewModel.visiblePlaceID)
                     .frame(height: 100)
                     .background(Color.gray.opacity(0.9))
+                    .overlay {
+                        if viewModel.isLoadingMore {
+                            ZStack {
+                                Color.black.opacity(0.4)
+                                    .ignoresSafeArea()
+                                ProgressView("Loading more...")
+                                    .padding()
+                                    .background(Color.white.opacity(0.9))
+                                    .cornerRadius(10)
+                                    .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 5)
+                                    .foregroundColor(.primary)
+                                    .font(.headline)
+                            }
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        }
+                    }
                 }
             }
         }

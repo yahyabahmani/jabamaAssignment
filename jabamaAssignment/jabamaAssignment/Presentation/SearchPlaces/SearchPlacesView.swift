@@ -9,17 +9,17 @@ import SwiftUI
 
 struct SearchPlacesView: View {
     @StateObject private var viewModel: SearchPlacesViewModel
-      var onShowOnMap: ([Place], String) -> Void
+    var onShowOnMap: ([Place], String) -> Void
 
-      init(viewModel: SearchPlacesViewModel, onShowOnMap: @escaping ([Place], String) -> Void) {
-          _viewModel = StateObject(wrappedValue: viewModel)
-          self.onShowOnMap = onShowOnMap
-      }
+    init(viewModel: SearchPlacesViewModel, onShowOnMap: @escaping ([Place], String) -> Void) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+        self.onShowOnMap = onShowOnMap
+    }
 
     var body: some View {
         VStack {
             TextField("Search for places", text: $viewModel.query)
-                .onChange(of: viewModel.query) { oldValue, newValue in
+                .onChange(of: viewModel.query) { _, _ in
                     viewModel.isSearchMode = true
                 }
                 .padding()
@@ -35,12 +35,14 @@ struct SearchPlacesView: View {
                         viewModel.isSearchMode = false
                     }
                 }
-            
+
             Spacer(minLength: 20)
+
             if viewModel.isLoading {
                 ProgressView("Searching...")
                     .padding()
-            } else if viewModel.places.isEmpty {
+            }
+            else if viewModel.places.isEmpty {
                 VStack(spacing: 16) {
                     Text("No results found")
                         .foregroundColor(.gray)
@@ -50,20 +52,34 @@ struct SearchPlacesView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 80, height: 80)
-                        .foregroundColor(.gray.opacity(0.5)) // Optional icon for empty state
+                        .foregroundColor(.gray.opacity(0.5))
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-            } else {
+            }
+            else {
                 ScrollView {
-                    VStack(spacing: 10) {
+                    LazyVStack(spacing: 10) {
                         ForEach(viewModel.places) { place in
                             PlaceCardView(place: place)
+                                .onAppear {
+                                    if place.id == viewModel.places.last?.id && viewModel.places.count >= 10 {
+                                        Task {
+                                            await viewModel.loadMorePlaces()
+                                        }
+                                    }
+                                }
+                        }
+                        if viewModel.isLoadingMore {
+                            ProgressView("Loading more...")
+                                .padding()
                         }
                     }
                     .padding(.top, 10)
                 }
             }
+            
             Spacer()
+            
             if !viewModel.places.isEmpty || viewModel.isSearchMode {
                 Button(action: {
                     if viewModel.isSearchMode {
@@ -90,17 +106,13 @@ struct SearchPlacesView: View {
             }
         }
         .padding(.top, 16)
-        .onAppear {
-            Task {
-                await viewModel.searchPlaces()
-            }
-        }
-            
     }
 }
 
+
+
 #Preview {
-    let searchPlacesViewModel = SearchPlacesViewModel(searchPlacesUseCaseProtocol: MockGetSearchPlacesUseCase())
+    let searchPlacesViewModel = SearchPlacesViewModel(searchPlacesUseCase: MockGetSearchPlacesUseCase())
     SearchPlacesView(viewModel: searchPlacesViewModel) { places, searchedText  in
         print("Selected places to show on map: \(places)")
     }

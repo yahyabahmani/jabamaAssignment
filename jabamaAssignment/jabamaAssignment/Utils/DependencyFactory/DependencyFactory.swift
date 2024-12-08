@@ -17,10 +17,9 @@ final class DependencyFactory {
      func makeSearchPlacesViewModel(query: String) -> SearchPlacesViewModel {
         let networkManager = NetworkManager()
         let searchRepository = SearchRepository(networkManager: networkManager)
-         
         let searchPlacesUseCase = SearchPlacesUseCase(repository: searchRepository)
         return SearchPlacesViewModel(
-            searchPlacesUseCaseProtocol: searchPlacesUseCase,
+            searchPlacesUseCase: searchPlacesUseCase,
             initialQuery: query
         )
     }
