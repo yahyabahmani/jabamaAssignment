@@ -8,10 +8,17 @@
 import SwiftUI
 
 @main
-struct jabamaAssignmentApp: App {
+struct JabamaAssignmentApp: App {
+    private let factory = DependencyFactory()
+
     var body: some Scene {
         WindowGroup {
-            
+
+            let mapViewModel = factory.makeMapViewModel()
+            MapView(
+                viewModel: mapViewModel,
+                searchPlacesViewModelFactory: factory.makeSearchPlacesViewModel()
+            )
         }
     }
 }
