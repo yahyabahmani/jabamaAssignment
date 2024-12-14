@@ -22,8 +22,6 @@ struct JabamaApp: App {
     
     private func registerDependencies(){
         DependencyResolver.register(type: NetworkAgent.self,as: .singleton, NetworkAgent())
-        DependencyResolver.register(type: PlaceListApiService.self, PlaceListApiService())
-        DependencyResolver.register(type: PlaceListRepo.self, PlaceListRepoImpl())
     }
     
     private func preConfigure(){

@@ -8,12 +8,10 @@
 import Foundation
 import Combine
 
-struct PlaceListApiService: PlaceListRepo {
+struct PlaceListApiService {
     @Inject private var repo: PlaceListRepo
     
     func searchPlaces(query: SearchPlaceQuery) -> AnyPublisher<SearchPlaceRes, ErrorModel> {
         return repo.searchPlaces(query: query)
     }
-    
-    
 }

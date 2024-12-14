@@ -8,10 +8,16 @@
 import SwiftUI
 
 struct PlaceListMainView: View {
-    @State private var viewModel: PlaceListMainViewModel = .init()
+    @State private var viewModel: PlaceListMainViewModel
     @State private var locationManager: LocationManager = .init()
     @State private var isNoGpsPresented: Bool = false
     private var reachability: NetworkReachability = .init()
+    
+    init () {
+        DependencyResolver.register(type: PlaceListApiService.self, PlaceListApiService())
+        DependencyResolver.register(type: PlaceListRepo.self, PlaceListRepoImpl())
+        self._viewModel = .init(initialValue: .init())
+    }
     var body: some View {
         ZStack {
             Color.white.ignoresSafeArea()
