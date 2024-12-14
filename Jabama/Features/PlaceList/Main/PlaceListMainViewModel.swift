@@ -141,6 +141,7 @@ extension PlaceListMainViewModel{
     private func listenToChanges(){
         searchTextPublisher
             .debounce(for: .seconds(0.2), scheduler: RunLoop.main)
+            .removeDuplicates()
             .sink { value in
                 self.searchText = value
                 Task{
@@ -151,6 +152,7 @@ extension PlaceListMainViewModel{
         
         locationPublisher
             .debounce(for: .seconds(0.4), scheduler: RunLoop.main)
+            .removeDuplicates()
             .sink { value in
                 self.appLocation = value
                 Task{
