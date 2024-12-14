@@ -87,6 +87,8 @@ this folder contains the supporting files for the project including:
 - **Assets**: Contains the assets for the project.
 - **Localization**: Contains the localization files for the project.
 
+## Installation
+- place your api key in the `AppConstants` file.
 
 ## Notes
 
